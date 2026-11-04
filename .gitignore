@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+.idea/
+.DS_Store
+*.user
+*.binlog
+*.log
+*.ips
+*.p12
+*.pfx
+*.mobileprovision

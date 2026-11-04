@@ -1,0 +1,17 @@
+@page "/"
+@page "/color-slider-repro"
+
+<h1>MudColorPicker</h1>
+<p>Drag the hue slider repeatedly, then the alpha slider.</p>
+
+<MudColorPicker @bind-Value="_color"
+                PickerVariant="PickerVariant.Static"
+                ColorPickerMode="ColorPickerMode.HEX"
+                ShowSliders="true"
+                ShowAlpha="true" />
+
+<p>Current color: @_color</p>
+
+@code {
+    private MudColor? _color = new("#58A6FFFF");
+}

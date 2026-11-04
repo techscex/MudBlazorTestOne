@@ -1,0 +1,14 @@
+@inherits LayoutComponentBase
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<main>
+    <nav aria-label="Reproduction pages">
+        <NavLink href="/" Match="NavLinkMatch.All">Color picker</NavLink>
+        <NavLink href="/slider-only-repro">Sliders only</NavLink>
+    </nav>
+    @Body
+</main>

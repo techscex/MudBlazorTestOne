@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <TargetFramework>net10.0-ios</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MudSliderHybridRepro</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableDefaultCssItems>false</EnableDefaultCssItems>
+    <ApplicationTitle>MudSlider AOT Repro</ApplicationTitle>
+    <ApplicationId>com.example.mudsliderhybridrepro</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
+    <!-- Reproduce the report's Mono runtime path, including Debug builds.
+         PublishAot=true would switch to the different NativeAOT runtime. -->
+    <PublishAot>false</PublishAot>
+    <UseInterpreter>false</UseInterpreter>
+    <MtouchInterpreter></MtouchInterpreter>
+    <MtouchUseLlvm>false</MtouchUseLlvm>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="NuGet.Config" />
+    <MauiIcon Include="Resources/AppIcon/appicon.svg" ForegroundFile="Resources/AppIcon/appiconfg.svg" Color="#512BD4" />
+    <MauiSplashScreen Include="Resources/Splash/splash.svg" Color="#512BD4" BaseSize="128,128" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.120" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="10.0.120" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.14" />
+    <PackageReference Include="MudBlazor" Version="9.12.0" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+@page "/slider-only-repro"
+
+<h1>MudSlider&lt;int&gt;</h1>
+<p>Drag each slider repeatedly. Its value should update immediately.</p>
+<p>Hue: @_hue</p>
+<MudSlider T="int" @bind-Value="_hue"
+           Min="0" Max="360" Step="1" Immediate="true" />
+<p>Alpha: @_alpha</p>
+<MudSlider T="int" @bind-Value="_alpha"
+           Min="0" Max="255" Step="1" Immediate="true" />
+
+@code {
+    private int _hue = 180;
+    private int _alpha = 255;
+}

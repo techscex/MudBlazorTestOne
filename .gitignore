@@ -10,3 +10,4 @@ obj/
 *.p12
 *.pfx
 *.mobileprovision
+node_modules/

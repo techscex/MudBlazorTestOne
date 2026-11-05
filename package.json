@@ -1,0 +1,12 @@
+{
+  "name": "mudslider-hybrid-repro-assets",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:assets": "tsc --project tsconfig.json && sass --no-source-map Styles/owned-controls.scss wwwroot/owned-controls.css"
+  },
+  "devDependencies": {
+    "sass": "1.93.1",
+    "typescript": "5.9.2"
+  }
+}

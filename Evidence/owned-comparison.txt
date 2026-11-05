@@ -1,0 +1,88 @@
+Owned and MudBlazor controls in the same Debug Mono AOT app
+
+Target: net10.0-ios / iossimulator-arm64 / Debug
+Simulator: iPhone 14 Pro Max, iOS 26.5
+UseInterpreter=false; MtouchInterpreter empty; PublishAot=false; LLVM=false; partial trimming.
+Both control families were mounted on each comparison page with independent state.
+
+Observed native interaction results:
+- AppMudColorPicker (Owned): initial #58A6FFFF; hue drag to 100 degrees produced #90FF58FF.
+- Owned alpha drag to 128/255 and SV-plane movement produced #61805280.
+- Owned HEX input FF000080 normalized on blur to #FF000080; app remained responsive.
+- Invalid HEX text displayed validation and retained the prior published color.
+- AppMudColorSlider (Owned): hue 180 -> 71 and alpha 255 -> 100; app remained responsive.
+- On that same slider page, MudBlazor values remained hue 180 / alpha 255.
+- MudSlider<int> (MudBlazor): hue drag terminated the app to Home Screen.
+- After relaunch, MudColorPicker (MudBlazor): hue drag terminated the app to Home Screen.
+- Owned edits did not change the upstream picker starting value #58A6FFFF.
+
+Runtime stderr for each standard-control crash (private prefixes removed):
+
+MudSlider<int> standalone hue:
+mini-generic-sharing.c:2761, condition `is_ok (error)' not met, function:mini_instantiate_gshared_info, Attempting to JIT compile method 'void MudBlazor.MudSlider`1/<SetValueTextAsync>d__91<int>:MoveNext ()' while running in aot-only mode. See https://learn.microsoft.com/xamarin/ios/internals/limitations for more information.
+
+MudColorPicker hue:
+mini-generic-sharing.c:2761, condition `is_ok (error)' not met, function:mini_instantiate_gshared_info, Attempting to JIT compile method 'void MudBlazor.MudSlider`1/<SetValueTextAsync>d__91<int>:MoveNext ()' while running in aot-only mode. See https://learn.microsoft.com/xamarin/ios/internals/limitations for more information.
+
+New native reports:
+
+EXC_CRASH / SIGABRT; main thread.
+libsystem_kernel.dylib: __pthread_kill
+libsystem_pthread.dylib: pthread_kill
+libsystem_c.dylib: abort
+libmonosgen-2.0.dylib: sigabrt_signal_handler.cold.1
+libmonosgen-2.0.dylib: sigabrt_signal_handler
+libsystem_platform.dylib: _sigtramp
+libsystem_pthread.dylib: pthread_kill
+libsystem_c.dylib: abort
+libxamarin-dotnet-debug.dylib: log_callback(char const*, char const*, char const*, int, void*)
+libmonosgen-2.0.dylib: monoeg_g_logv_nofree
+libmonosgen-2.0.dylib: monoeg_assertion_message
+libmonosgen-2.0.dylib: mini_instantiate_gshared_info.cold.1
+libmonosgen-2.0.dylib: mini_instantiate_gshared_info
+libmonosgen-2.0.dylib: mini_init_method_rgctx.cold.1
+libmonosgen-2.0.dylib: mini_init_method_rgctx
+MudSliderHybridRepro: System_Runtime_CompilerServices_AsyncMethodBuilderCore_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_
+MudSliderHybridRepro: gsharedvt_trampoline
+MudSliderHybridRepro: gsharedvt_out_trampoline
+MudSliderHybridRepro: System_Runtime_CompilerServices_AsyncTaskMethodBuilder_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_
+MudSliderHybridRepro: gsharedvt_trampoline
+MudSliderHybridRepro: gsharedvt_out_trampoline
+MudSliderHybridRepro: MudBlazor_MudSlider_1_T_GSHAREDVT_SetValueTextAsync_string
+MudSliderHybridRepro: Microsoft_AspNetCore_Components_EventCallbackFactoryBinderExtensions__c__DisplayClass65_0_1___CreateBinderCoreAsyncb__0d_T_REF_MoveNext
+MudSliderHybridRepro: System_Runtime_CompilerServices_AsyncMethodBuilderCore_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_
+MudSliderHybridRepro: gsharedvt_trampoline
+
+EXC_CRASH / SIGABRT; main thread.
+libsystem_kernel.dylib: __pthread_kill
+libsystem_pthread.dylib: pthread_kill
+libsystem_c.dylib: abort
+libmonosgen-2.0.dylib: sigabrt_signal_handler.cold.1
+libmonosgen-2.0.dylib: sigabrt_signal_handler
+libsystem_platform.dylib: _sigtramp
+libsystem_pthread.dylib: pthread_kill
+libsystem_c.dylib: abort
+libxamarin-dotnet-debug.dylib: log_callback(char const*, char const*, char const*, int, void*)
+libmonosgen-2.0.dylib: monoeg_g_logv_nofree
+libmonosgen-2.0.dylib: monoeg_assertion_message
+libmonosgen-2.0.dylib: mini_instantiate_gshared_info.cold.1
+libmonosgen-2.0.dylib: mini_instantiate_gshared_info
+libmonosgen-2.0.dylib: mini_init_method_rgctx.cold.1
+libmonosgen-2.0.dylib: mini_init_method_rgctx
+MudSliderHybridRepro: System_Runtime_CompilerServices_AsyncMethodBuilderCore_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_
+MudSliderHybridRepro: gsharedvt_trampoline
+MudSliderHybridRepro: gsharedvt_out_trampoline
+MudSliderHybridRepro: System_Runtime_CompilerServices_AsyncTaskMethodBuilder_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_
+MudSliderHybridRepro: gsharedvt_trampoline
+MudSliderHybridRepro: gsharedvt_out_trampoline
+MudSliderHybridRepro: MudBlazor_MudSlider_1_T_GSHAREDVT_SetValueTextAsync_string
+MudSliderHybridRepro: Microsoft_AspNetCore_Components_EventCallbackFactoryBinderExtensions__c__DisplayClass65_0_1___CreateBinderCoreAsyncb__0d_T_REF_MoveNext
+MudSliderHybridRepro: System_Runtime_CompilerServices_AsyncMethodBuilderCore_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_
+MudSliderHybridRepro: gsharedvt_trampoline
+
+Scope:
+Native iOS simulator interaction evidence, not browser emulation or a managed fixture.
+Physical-device Debug, Release/TestFlight, repeated stress, tablet/rotation,
+RTL/keyboard regression, disabled controls and standalone alpha-only crashes were not checked.
+The original physical Release iface_offset != -1 assertion remains a distinct report.
+No claim of an identical runtime root cause is made.

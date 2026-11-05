@@ -1,0 +1,15 @@
+.app-color-slider {
+    min-width: 0;
+    label { display: flex; justify-content: space-between; gap: .75rem; }
+    input {
+        display: block; box-sizing: border-box; width: 100%; min-height: 44px; margin: 0;
+        padding: 0; background: transparent; touch-action: pan-y;
+        appearance: none; -webkit-appearance: none; cursor: pointer;
+        &:focus-visible { outline: 2px solid var(--mud-palette-primary); outline-offset: 2px; border-radius: .3rem; }
+        &::-webkit-slider-runnable-track { height: 18px; border-radius: 9px; background: var(--app-color-track); border: 1px solid var(--mud-palette-lines-inputs); }
+        &::-moz-range-track { height: 18px; border-radius: 9px; background: var(--app-color-track); border: 1px solid var(--mud-palette-lines-inputs); }
+        &::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 26px; height: 26px; margin-top: -5px; border: 3px solid white; border-radius: 50%; background: var(--mud-palette-text-primary); box-shadow: 0 0 0 1px #333; }
+        &::-moz-range-thumb { width: 22px; height: 22px; border: 3px solid white; border-radius: 50%; background: var(--mud-palette-text-primary); box-shadow: 0 0 0 1px #333; }
+        &:disabled { cursor: default; opacity: .55; }
+    }
+}

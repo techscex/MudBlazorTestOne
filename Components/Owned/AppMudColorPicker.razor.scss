@@ -1,0 +1,20 @@
+.app-color-picker {
+    width: min(100%, 24rem); min-width: 0; display: grid; gap: .4rem;
+    .app-color-picker-title { font-weight: 600; }
+    .app-color-sv {
+        height: 190px; position: relative; overflow: hidden; border-radius: .5rem;
+        border: 1px solid var(--mud-palette-lines-inputs); touch-action: none; cursor: crosshair;
+        &:focus-visible { outline: 3px solid var(--mud-palette-primary); outline-offset: 2px; }
+        span { position: absolute; inset: 0; pointer-events: none; }
+        .app-color-sv-white { background: linear-gradient(to right, white, transparent); }
+        .app-color-sv-black { background: linear-gradient(to top, black, transparent); }
+        .app-color-sv-thumb { inset: auto; left: var(--app-color-x); top: var(--app-color-y); width: 22px; height: 22px; transform: translate(-50%, -50%); border: 3px solid white; border-radius: 50%; box-shadow: 0 0 0 1px #333; }
+    }
+    &[dir="rtl"] .app-color-sv-white { background: linear-gradient(to left, white, transparent); }
+    &[data-color-disabled="true"] .app-color-sv { cursor: default; opacity: .65; }
+    .app-color-hint { font-size: .8rem; color: var(--mud-palette-text-secondary); margin: 0; }
+    .app-color-hex-row { display: flex; align-items: end; gap: .75rem; }
+    .app-color-preview { width: 44px; height: 44px; flex: none; border: 1px solid var(--mud-palette-lines-inputs); border-radius: .35rem; overflow: hidden; background: repeating-conic-gradient(#aaa 0% 25%,#eee 0% 50%) 0/12px 12px; span { display: block; width: 100%; height: 100%; } }
+    .app-color-hex-field { min-width: 0; flex: 1; label { display: block; } input { box-sizing: border-box; min-height: 44px; width: 100%; max-width: 100%; border: 1px solid var(--mud-palette-lines-inputs); border-radius: .35rem; padding: .5rem; font: inherit; color: var(--mud-palette-text-primary); background: var(--mud-palette-surface); &:focus-visible { outline: 2px solid var(--mud-palette-primary); } &[aria-invalid="true"] { border-color: var(--mud-palette-error); } } }
+    .app-color-error { color: var(--mud-palette-error); font-size: .85rem; margin: 0; }
+}

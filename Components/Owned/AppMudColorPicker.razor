@@ -1,0 +1,33 @@
+@using System.Globalization
+@namespace MudSliderHybridRepro.Components.Owned
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<section @ref="root" class="app-color-picker" aria-label="@Label" data-color-disabled="@(Disabled ? "true" : "false")"
+         dir="@(Rtl ? "rtl" : "ltr")">
+    <div class="app-color-picker-title">@Label</div>
+    <div class="app-color-sv" data-color-sv="true" role="slider" tabindex="@(Disabled ? -1 : 0)"
+         aria-label="@L("ThemeSchemeColorSv")" aria-disabled="@(Disabled ? "true" : "false")" aria-valuemin="0" aria-valuemax="100"
+         aria-valuenow="@Number(saturation * 100)" aria-valuetext="@SvText" aria-describedby="@hintId"
+         data-color-s="@Number(saturation)" data-color-v="@Number(brightness)"
+         style="background-color:@HueColor;--app-color-x:@Number((Rtl ? 1 - saturation : saturation) * 100)%;--app-color-y:@Number((1 - brightness) * 100)%">
+        <span class="app-color-sv-white"></span><span class="app-color-sv-black"></span>
+        <span class="app-color-sv-thumb"></span>
+    </div>
+    <p id="@hintId" class="app-color-hint">@L("ThemeSchemeColorSvKeys")</p>
+    <AppMudColorSlider Label="@L("MudColorPicker_HueSlider")" Value="hue" ValueChanged="SetHue" Max="360" Step="1"
+                       ValueText="@(Number(hue) + "°")" Track="@HueTrack" Disabled="Disabled" />
+    <AppMudColorSlider Label="@L("MudColorPicker_AlphaSlider")" Value="@(alpha * 255)" ValueChanged="SetAlpha" Max="255" Step="1"
+                       ValueText="@(Number(alpha * 100) + "%")" Track="@AlphaTrack" Disabled="Disabled" />
+    <div class="app-color-hex-row">
+        <span class="app-color-preview" aria-hidden="true"><span style="background-color:@currentHex"></span></span>
+        <div class="app-color-hex-field">
+            <label for="@hexId">@L("ThemeSchemeColorHex")</label>
+            <input id="@hexId" type="text" @bind-value:get="hexText" @bind-value:set="SetHexText" @bind-value:event="oninput"
+                   @onblur="HexBlur" disabled="@Disabled"
+                   maxlength="9" spellcheck="false" autocomplete="off" autocapitalize="characters" dir="ltr"
+                   aria-invalid="@(invalidHex ? "true" : "false")" aria-describedby="@(invalidHex ? errorId : null)" />
+        </div>
+    </div>
+    @if (invalidHex) { <p id="@errorId" class="app-color-error" role="status">@L("ThemeSchemeColorInvalidHex")</p> }
+</section>

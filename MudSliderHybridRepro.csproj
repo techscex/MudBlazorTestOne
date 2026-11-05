@@ -27,7 +27,7 @@
     <DebugType>portable</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Content Remove="NuGet.Config" />
+    <Content Remove="NuGet.Config;package.json;package-lock.json;tsconfig.json" />
     <MauiIcon Include="Resources/AppIcon/appicon.svg" ForegroundFile="Resources/AppIcon/appiconfg.svg" Color="#512BD4" />
     <MauiSplashScreen Include="Resources/Splash/splash.svg" Color="#512BD4" BaseSize="128,128" />
     <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.120" />

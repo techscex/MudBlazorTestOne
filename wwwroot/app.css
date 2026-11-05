@@ -1,7 +1,13 @@
 html, body { margin: 0; font-family: sans-serif; }
-main { max-width: 36rem; margin: auto; padding: 1rem; padding-top: max(1rem, env(safe-area-inset-top)); padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+main { max-width: 64rem; margin: auto; padding: 1rem; padding-top: max(1rem, env(safe-area-inset-top)); padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
 nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
 nav a { min-height: 44px; display: inline-flex; align-items: center; }
 h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.15rem; overflow-wrap: anywhere; }
 p { margin: 1rem 0; }
+.comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.comparison-card { min-width: 0; padding: 1rem; border: 1px solid var(--mud-palette-lines-default); border-radius: .5rem; }
+.component-kind { display: block; font-size: .85rem; font-weight: normal; color: var(--mud-palette-text-secondary); }
+.current-value { overflow-wrap: anywhere; }
+@media (max-width: 48rem) { .comparison-grid { grid-template-columns: minmax(0, 1fr); } }
 #blazor-error-ui { display: none; position: fixed; bottom: 0; padding: 1rem; background: #fff3cd; color: #222; }

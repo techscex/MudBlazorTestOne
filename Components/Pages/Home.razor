@@ -1,17 +1,30 @@
 @page "/"
 @page "/color-slider-repro"
 
-<h1>MudColorPicker</h1>
-<p>Drag the hue slider repeatedly, then the alpha slider.</p>
+<h1>Color picker comparison</h1>
+<p>Each component starts at #58A6FFFF and keeps its own value.</p>
 
-<MudColorPicker @bind-Value="_color"
-                PickerVariant="PickerVariant.Static"
-                ColorPickerMode="ColorPickerMode.HEX"
-                ShowSliders="true"
-                ShowAlpha="true" />
+<div class="comparison-grid">
+    <section class="comparison-card" aria-labelledby="owned-picker-heading">
+        <h2 id="owned-picker-heading">AppMudColorPicker <span class="component-kind">Owned</span></h2>
+        <p>Native ranges, saturation/brightness plane and HEX input.</p>
+        <AppMudColorPicker @bind-Value="_ownedColor" Label="Owned color" />
+        <p class="current-value">Owned color: <output>@_ownedColor</output></p>
+    </section>
 
-<p>Current color: @_color</p>
+    <section class="comparison-card" aria-labelledby="mud-picker-heading">
+        <h2 id="mud-picker-heading">MudColorPicker <span class="component-kind">MudBlazor</span></h2>
+        <p>Original crash baseline. Drag hue, then alpha.</p>
+        <MudColorPicker @bind-Value="_color"
+                        PickerVariant="PickerVariant.Static"
+                        ColorPickerMode="ColorPickerMode.HEX"
+                        ShowSliders="true"
+                        ShowAlpha="true" />
+        <p class="current-value">MudBlazor color: <output>@_color</output></p>
+    </section>
+</div>
 
 @code {
+    private string _ownedColor = "#58A6FFFF";
     private MudColor? _color = new("#58A6FFFF");
 }

@@ -1,15 +1,37 @@
 @page "/slider-only-repro"
 
-<h1>MudSlider&lt;int&gt;</h1>
-<p>Drag each slider repeatedly. Its value should update immediately.</p>
-<p>Hue: @_hue</p>
-<MudSlider T="int" @bind-Value="_hue"
-           Min="0" Max="360" Step="1" Immediate="true" />
-<p>Alpha: @_alpha</p>
-<MudSlider T="int" @bind-Value="_alpha"
-           Min="0" Max="255" Step="1" Immediate="true" />
+<h1>Slider comparison</h1>
+<p>Each pair keeps its own hue and alpha. Values update while dragging.</p>
+
+<div class="comparison-grid">
+    <section class="comparison-card" aria-labelledby="owned-slider-heading">
+        <h2 id="owned-slider-heading">AppMudColorSlider <span class="component-kind">Owned</span></h2>
+        <p>Nongeneric component using native HTML ranges.</p>
+        <AppMudColorSlider Label="Hue (owned)" @bind-Value="_ownedHue"
+                           Min="0" Max="360" Step="1" ValueText="@_ownedHue.ToString("0")" />
+        <AppMudColorSlider Label="Alpha (owned)" @bind-Value="_ownedAlpha"
+                           Min="0" Max="255" Step="1" ValueText="@_ownedAlpha.ToString("0")" />
+        <p class="current-value">Owned: hue <output>@_ownedHue</output>, alpha <output>@_ownedAlpha</output></p>
+    </section>
+
+    <section class="comparison-card" aria-labelledby="mud-slider-heading">
+        <h2 id="mud-slider-heading">MudSlider&lt;int&gt; <span class="component-kind">MudBlazor</span></h2>
+        <p>Original generic slider reduction.</p>
+        <label for="mud-hue">Hue (MudBlazor): @_hue</label>
+        <MudSlider T="int" @bind-Value="_hue" UserAttributes="HueAttributes"
+                   Min="0" Max="360" Step="1" Immediate="true" />
+        <label for="mud-alpha">Alpha (MudBlazor): @_alpha</label>
+        <MudSlider T="int" @bind-Value="_alpha" UserAttributes="AlphaAttributes"
+                   Min="0" Max="255" Step="1" Immediate="true" />
+        <p class="current-value">MudBlazor: hue <output>@_hue</output>, alpha <output>@_alpha</output></p>
+    </section>
+</div>
 
 @code {
+    private double _ownedHue = 180;
+    private double _ownedAlpha = 255;
     private int _hue = 180;
     private int _alpha = 255;
+    private static readonly Dictionary<string, object> HueAttributes = new() { ["id"] = "mud-hue", ["aria-label"] = "Hue (MudBlazor)" };
+    private static readonly Dictionary<string, object> AlphaAttributes = new() { ["id"] = "mud-alpha", ["aria-label"] = "Alpha (MudBlazor)" };
 }

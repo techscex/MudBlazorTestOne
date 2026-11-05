@@ -1,0 +1,86 @@
+@page "/matched-sliders"
+@inject IJSRuntime JS
+
+<h1>Matched MudSlider variants</h1>
+<p>One selected slider is mounted at a time. Each starts at180, range0..360, step1, Immediate=true. No theme preview or API work runs.</p>
+<p>Build/runtime mode is qualified by the accompanying artifact receipt, not by this page's title.</p>
+<label for="repro-case">Controlled case</label>
+<select id="repro-case" value="@_case" @onchange="ChooseCase">
+    <option value="int-bind">1. MudSlider&lt;int&gt; plain bind, no value label</option>
+    <option value="double-bind">2. MudSlider&lt;double&gt; plain bind, no value label</option>
+    <option value="double-task">3. MudSlider&lt;double&gt; explicit Task.CompletedTask, no value label</option>
+    <option value="double-task-label">4. Blade exact double callback and value label</option>
+</select>
+<button type="button" @onclick="Mount">Mount selected case</button>
+<button type="button" @onclick="Unmount">Unmount / reset</button>
+<p>Selected: <strong id="case-name">@_case</strong>. Mounted: @_mounted. Synthetic driver requested: @Drive.</p>
+@if (_mounted)
+{
+    <section id="active-slider" @key="_case">
+        @if (_case == "int-bind")
+        {
+            <MudSlider T="int" @bind-Value="_integer" Min="0" Max="360" Step="1" Immediate="true" />
+        }
+        else if (_case == "double-bind")
+        {
+            <MudSlider T="double" @bind-Value="_number" Min="0" Max="360" Step="1" Immediate="true" />
+        }
+        else if (_case == "double-task")
+        {
+            <MudSlider T="double" Value="_number" ValueChanged="ChangeNumber" Min="0" Max="360" Step="1" Immediate="true" />
+        }
+        else if (_case == "double-task-label")
+        {
+            <MudSlider T="double" Value="_number" ValueChanged="ChangeNumber" Min="0" Max="360" Step="1" Immediate="true" ValueLabel="true" />
+        }
+        <p>Current value: <output id="observed-value">@(_case == "int-bind" ? _integer : _number)</output></p>
+        <p>Explicit callback events: <output id="observed-events">@(_case.StartsWith("double-task", StringComparison.Ordinal) ? _events.ToString() : "not instrumented; plain binding")</output></p>
+    </section>
+}
+<p>Plain bindings have no custom setter, AfterBind or counter callback. Cases3/4 use the same finite/clamp/value/count handler returning Task.CompletedTask. Labels are shown outside every control.</p>
+<p id="driver-result">@_driverResult</p>
+
+@code {
+    [SupplyParameterFromQuery(Name = "case")] public string? RequestedCase { get; set; }
+    [SupplyParameterFromQuery(Name = "drive")] public bool Drive { get; set; }
+    private string _case = "int-bind";
+    private bool _mounted, _driverStarted;
+    private int _integer = 180;
+    private double _number = 180;
+    private long _events;
+    private string _driverResult = "Manual input; synthetic driver has not run.";
+    private static bool Valid(string? value) => value is "int-bind" or "double-bind" or "double-task" or "double-task-label";
+    protected override void OnParametersSet()
+    {
+        if (Valid(RequestedCase)) { _case = RequestedCase!; Mount(); }
+    }
+    private void ChooseCase(ChangeEventArgs value) { if (Valid(value.Value?.ToString())) { _case = value.Value!.ToString()!; Unmount(); } }
+    private void Mount() { ResetValues(); _mounted = true; ReproDiagnostics.Mark("mounted", _case); }
+    private void Unmount() { _mounted = false; ResetValues(); }
+    private void ResetValues() { _integer = 180; _number = 180; _events = 0; _driverStarted = false; }
+    private Task ChangeNumber(double value)
+    {
+        if (!double.IsFinite(value)) return Task.CompletedTask;
+        value = Math.Clamp(value, 0, 360);
+        if (value != _number) { _number = value; ++_events; }
+        return Task.CompletedTask;
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!Drive || !_mounted || _driverStarted) return;
+        _driverStarted = true;
+        ReproDiagnostics.Mark("synthetic-start", _case, "actual DOM range input; not a finger gesture");
+        try
+        {
+            _driverResult = await JS.InvokeAsync<string>("reproRangeDriver.run", "active-slider", "181,220,140,260");
+            ReproDiagnostics.Mark("synthetic-completed", _case, _driverResult);
+            StateHasChanged();
+        }
+        catch (Exception error)
+        {
+            _driverResult = "Managed driver failure: " + error.GetType().Name;
+            ReproDiagnostics.Mark("synthetic-managed-error", _case, error.GetType().Name);
+            StateHasChanged();
+        }
+    }
+}

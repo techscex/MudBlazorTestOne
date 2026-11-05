@@ -1,4 +1,4 @@
-# MudSlider Hybrid AOT reproduction
+# MudBlazorTestOne
 
 AGENT-CONTROLLED README
 
@@ -139,29 +139,34 @@ npm run build:assets
 The lockfile pins TypeScript 5.9.2 and Sass 1.93.1. Edit the `.ts` / `.scss` sources
 and regenerate; do not edit `wwwroot/owned-controls.js` or `.css` directly.
 
-## Current comparison verification
+## Current matched runtime matrix
 
-The combined demo was built and exercised in **Debug Mono AOT** on the same
-arm64 iPhone 14 Pro Max / iOS 26.5 simulator:
+On the named iPhone14ProMax/iOS26.5 simulator, the operator's original paired
+`MudSlider<int>` drag at12:20:49UTC again produced a matched SIGABRT through
+SetValueTextAsync. Owned picker input updated without exit.
 
-| Component label | Observed result |
-| --- | --- |
-| **AppMudColorSlider — Owned** | Hue and alpha updated without a crash. The standard sliders kept their independent values. |
-| **AppMudColorPicker — Owned** | Hue, alpha, SV-plane dragging and HEX editing updated the canonical color without a crash. Invalid HEX displayed validation and preserved the published color. |
-| **MudSlider<int> — MudBlazor** | Hue dragging terminated the app with SIGABRT. |
-| **MudColorPicker — MudBlazor** | After relaunch, hue dragging terminated the app with SIGABRT. |
+The controlled `/matched-sliders` page changes one variable per step:
 
-Both new standard-control crashes report an attempt to JIT-compile the generic
-`MudSlider<int>.SetValueTextAsync` async `MoveNext` in AOT-only mode. The
-[sanitized comparison evidence](Evidence/owned-comparison.txt) includes observed
-values, both assertions and native frames. This is bounded simulator evidence;
-it does not prove physical-device Release behavior or an identical root cause
-to the original `iface_offset != -1` report.
+| Case, initial180/range0..360/step1/Immediate | Full-AOT | `all,-MudBlazor` |
+|---|---|---|
+| int plain bind, no label | SIGABRT | four values updated |
+| double plain bind, no label | SIGABRT | four values updated |
+| double explicit Task.CompletedTask, no label | SIGABRT | four values updated |
+| Blade exact double explicit/ValueLabel=true | SIGABRT | four values updated |
 
-The combined Debug build passed with zero errors and the same two local Xcode
-preferences deprecation warnings. TypeScript/Sass asset generation passed.
-Physical-device, Release/TestFlight, tablet/rotation, RTL/keyboard, disabled and
-stress checks were not run for this comparison.
+These later inputs are **synthetic actual DOM range events**, not finger drags;
+rendered .NET outputs181/220/140/260 were checked. Both Debug builds used the
+same SDK402, packages, source and simulator; only interpreter selection changed.
+Their generated modes are MONO_AOT_MODE_FULL vs MONO_AOT_MODE_INTERP.
+Both stock647-shape selector registration and native-select controls mounted
+without exit in both modes; physical647 dropdown SIGSEGV was not reproduced.
+
+[Detailed measured evidence](Evidence/matched-runtime-matrix.md) and its compact
+JSON distinguish real/synthetic input, native signatures and scope limits.
+No physical Release or complete Mono-fix claim follows from these results.
+For opt-in synthetic launch, set `SIMCTL_CHILD_REPRO_START_PATH` to
+`/matched-sliders?case=int-bind&drive=true` (or double-bind, double-task,
+double-task-label). Ordinary entry/manual controls remain unchanged.
 
 ## Original baseline verification and scope
 
@@ -183,3 +188,16 @@ independent of parent build imports when cloned inside another checkout.
 NuGet.Config supplies only nuget.org. This repository contains the source and a
 sanitized crash extract. Build outputs, signing material, raw crash reports and
 local logs are excluded from version control.
+
+## Isolated selector and slider cases
+
+Open **647 selector tests** to test the stock string select with the three
+option-registration shapes from the failing Blade theme page: static mode
+items, generated SYSTEM/USER template items, and color roles with a swatch.
+The page initially mounts only an HTML chooser. Run all three or select an
+individual case; **native HTML select** is the control. Direct diagnostic
+paths end in `/select-only-repro/all`, `/mode`, `/template`, `/role` or `/native`
+under the same `/select-only-repro/` prefix. Use **Matched sliders** for the
+controlled integer/double and binding variants. The simulator and repository
+are named **MudBlazorTestOne**. The application bundle and assembly keep their
+original identities so prior crash reports remain comparable.

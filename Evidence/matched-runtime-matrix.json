@@ -1,0 +1,238 @@
+{
+  "environment": {
+    "sdk": "10.0.402",
+    "workloadSet": "10.0.402.1",
+    "iOSSdkPack": "27.1.10018",
+    "mauiWorkloadSdk": "10.0.110",
+    "mauiControlsAndWebViewNuGet": "10.0.120",
+    "componentsWebNuGet": "10.0.14",
+    "mudBlazor": "9.12.0",
+    "configuration": "Debug",
+    "rid": "iossimulator-arm64",
+    "simulatorModel": "iPhone14ProMax",
+    "simulatorOS": "iOS26.5",
+    "optimize": false,
+    "llvm": false,
+    "trimMode": "partial",
+    "linkMode": "SdkOnly"
+  },
+  "policies": {
+    "full": "UseInterpreter=false; emptyMtouchInterpreter; actualMONO_AOT_MODE_FULL",
+    "blade-mixed": "UseInterpreter=false; MtouchInterpreter=all,-MudBlazor; actualMONO_AOT_MODE_INTERP"
+  },
+  "operatorRealInteraction": {
+    "utc": "2026-11-05T12:20:49Z",
+    "case": "Original paired MudSlider<int> hue drag",
+    "nativeReportMatchedInstalledBinary": true,
+    "result": "EXC_CRASH/SIGABRT in SetValueTextAsync generic async-sharing path; not dictionary registration"
+  },
+  "measuredSyntheticRuns": [
+    {
+      "runtimePolicy": "full",
+      "case": "int-bind",
+      "inputKind": "synthetic actual rendered DOM range input",
+      "completed": false,
+      "nativeExitBeforeControlledCleanup": true,
+      "matchedNativeReport": true,
+      "nativeException": "SIGABRT",
+      "signature": "Attempting to JIT MudSlider<int/double>.SetValueTextAsync state-machine MoveNext in AOT-only mode",
+      "renderedDotNetValueObservations": []
+    },
+    {
+      "runtimePolicy": "full",
+      "case": "double-bind",
+      "inputKind": "synthetic actual rendered DOM range input",
+      "completed": false,
+      "nativeExitBeforeControlledCleanup": true,
+      "matchedNativeReport": true,
+      "nativeException": "SIGABRT",
+      "signature": "Attempting to JIT MudSlider<int/double>.SetValueTextAsync state-machine MoveNext in AOT-only mode",
+      "renderedDotNetValueObservations": []
+    },
+    {
+      "runtimePolicy": "full",
+      "case": "double-task",
+      "inputKind": "synthetic actual rendered DOM range input",
+      "completed": false,
+      "nativeExitBeforeControlledCleanup": true,
+      "matchedNativeReport": true,
+      "nativeException": "SIGABRT",
+      "signature": "Attempting to JIT MudSlider<int/double>.SetValueTextAsync state-machine MoveNext in AOT-only mode",
+      "renderedDotNetValueObservations": []
+    },
+    {
+      "runtimePolicy": "full",
+      "case": "double-task-label",
+      "inputKind": "synthetic actual rendered DOM range input",
+      "completed": false,
+      "nativeExitBeforeControlledCleanup": true,
+      "matchedNativeReport": true,
+      "nativeException": "SIGABRT",
+      "signature": "Attempting to JIT MudSlider<int/double>.SetValueTextAsync state-machine MoveNext in AOT-only mode",
+      "renderedDotNetValueObservations": []
+    },
+    {
+      "runtimePolicy": "full",
+      "case": "select-all",
+      "inputKind": "explicit app-local route mount, real stock component",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedNativeReport": false,
+      "nativeException": null,
+      "signature": null,
+      "renderedDotNetValueObservations": []
+    },
+    {
+      "runtimePolicy": "full",
+      "case": "select-native",
+      "inputKind": "explicit app-local route mount, real stock component",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedNativeReport": false,
+      "nativeException": null,
+      "signature": null,
+      "renderedDotNetValueObservations": []
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "int-bind",
+      "inputKind": "synthetic actual rendered DOM range input",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedNativeReport": false,
+      "nativeException": null,
+      "signature": null,
+      "renderedDotNetValueObservations": [
+        {
+          "input": "181",
+          "observed": "181"
+        },
+        {
+          "input": "220",
+          "observed": "220"
+        },
+        {
+          "input": "140",
+          "observed": "140"
+        },
+        {
+          "input": "260",
+          "observed": "260"
+        }
+      ]
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "double-bind",
+      "inputKind": "synthetic actual rendered DOM range input",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedNativeReport": false,
+      "nativeException": null,
+      "signature": null,
+      "renderedDotNetValueObservations": [
+        {
+          "input": "181",
+          "observed": "181"
+        },
+        {
+          "input": "220",
+          "observed": "220"
+        },
+        {
+          "input": "140",
+          "observed": "140"
+        },
+        {
+          "input": "260",
+          "observed": "260"
+        }
+      ]
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "double-task",
+      "inputKind": "synthetic actual rendered DOM range input",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedNativeReport": false,
+      "nativeException": null,
+      "signature": null,
+      "renderedDotNetValueObservations": [
+        {
+          "input": "181",
+          "observed": "181"
+        },
+        {
+          "input": "220",
+          "observed": "220"
+        },
+        {
+          "input": "140",
+          "observed": "140"
+        },
+        {
+          "input": "260",
+          "observed": "260"
+        }
+      ]
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "double-task-label",
+      "inputKind": "synthetic actual rendered DOM range input",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedNativeReport": false,
+      "nativeException": null,
+      "signature": null,
+      "renderedDotNetValueObservations": [
+        {
+          "input": "181",
+          "observed": "181"
+        },
+        {
+          "input": "220",
+          "observed": "220"
+        },
+        {
+          "input": "140",
+          "observed": "140"
+        },
+        {
+          "input": "260",
+          "observed": "260"
+        }
+      ]
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "select-all",
+      "inputKind": "explicit app-local route mount, real stock component",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedNativeReport": false,
+      "nativeException": null,
+      "signature": null,
+      "renderedDotNetValueObservations": []
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "select-native",
+      "inputKind": "explicit app-local route mount, real stock component",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedNativeReport": false,
+      "nativeException": null,
+      "signature": null,
+      "renderedDotNetValueObservations": []
+    }
+  ],
+  "limits": [
+    "Synthetic actual DOM range events are distinct from finger/drag input.",
+    "Stock selectors were mounted; selector option interaction was not automated in this matrix.",
+    "No physical device/Release claim; original physical647 dropdown SIGSEGV was not reproduced by simulator registration.",
+    "Allfourcases coexist in this sample assembly; adding cases can affect AOT generic coverage. The earlier original paired real-drag baseline is separately retained.",
+    "Only interpreter selection changed between these two matched builds."
+  ]
+}

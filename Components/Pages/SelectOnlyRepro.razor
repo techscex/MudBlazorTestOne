@@ -1,0 +1,48 @@
+@page "/select-only-repro"
+@page "/select-only-repro/{AutoCase}"
+
+<h1>Build 647 theme dropdown registration</h1>
+<p>Build 647 crashed while registering stock MudSelect&lt;string&gt; options when opening the theme editor. Run all three or isolate one selector. Only test values are used.</p>
+@if (!running)
+{
+    <label for="selector-case">Selector to mount</label>
+    <select id="selector-case" @bind="selected">
+        <option value="all">647 page entry: mode, template and color role</option>
+        <option value="mode">Mode — two string items</option>
+        <option value="template">Template — generated SYSTEM/USER items</option>
+        <option value="role">Color role — generated items with swatches</option>
+        <option value="native">Control — native HTML select</option>
+    </select>
+    <button @onclick="Start">Run selected case</button>
+}
+else
+{
+    <p>Mounted case: <strong>@selected</strong></p>
+    @if (selected == "native")
+    {
+        <label>Mode <select @bind="nativeValue"><option value="BRIGHT">Bright</option><option value="DARK">Dark</option></select></label>
+    }
+    else
+    {
+        <MudSelect647Probe Target="@selected" InputObserved="OnInput" />
+    }
+    <p>Stock selector changes: <output>@count</output></p>
+    <button @onclick="Reset">Stop and choose another case</button>
+}
+@code {
+    [Parameter] public string? AutoCase { get; set; }
+    private string selected = "all", nativeValue = "BRIGHT";
+    private bool running, markedMounted;
+    private long count;
+    protected override void OnInitialized()
+    {
+        if (AutoCase is "all" or "mode" or "template" or "role" or "native") { selected = AutoCase; Start(); }
+    }
+    private void Start() { ReproDiagnostics.Mark("Starting", "select-" + selected); running = true; markedMounted = false; count = 0; }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (running && !markedMounted) { ReproDiagnostics.Mark("Mounted", "select-" + selected); markedMounted = true; }
+    }
+    private void OnInput(long value) { count = value; ReproDiagnostics.Mark("Input", "select-" + selected, value.ToString()); }
+    private void Reset() { ReproDiagnostics.Mark("Closed", "select-" + selected); running = false; }
+}

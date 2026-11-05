@@ -1,0 +1,63 @@
+@using Microsoft.AspNetCore.Components
+@using MudBlazor
+
+@* Build 647 opened these three selectors together. Use only synthetic values. *@
+@if (Target is "all" or "mode")
+{
+    <MudSelect T="string" Value="@mode" ValueChanged="ChangeMode" Label="@ModeLabel" Disabled="false"
+               Variant="Variant.Outlined" Margin="Margin.Dense" Style="min-width:10rem">
+        <MudSelectItem T="string" Value='@("BRIGHT")'>Bright</MudSelectItem>
+        <MudSelectItem T="string" Value='@("DARK")'>Dark</MudSelectItem>
+    </MudSelect>
+}
+@if (Target is "all" or "template")
+{
+    <MudSelect T="string" Value="@template" ValueChanged="ChangeTemplate" Label="@TemplateLabel" Disabled="false"
+               Variant="Variant.Outlined" Margin="Margin.Dense">
+        @ThemeOptions()
+    </MudSelect>
+}
+@if (Target is "all" or "role")
+{
+    <MudSelect T="string" Value="@role" ValueChanged="ChangeRole" Label="@RoleLabel" Disabled="false"
+               Variant="Variant.Outlined" Margin="Margin.Dense">
+        @foreach (var colorRole in Roles)
+        {
+            <MudSelectItem T="string" Value="@colorRole"><span style="@SwatchStyle(colorRole)" aria-hidden="true"></span>@colorRole</MudSelectItem>
+        }
+    </MudSelect>
+}
+@code {
+    [Parameter] public string Target { get; set; } = "all";
+    [Parameter] public string ModeLabel { get; set; } = "Mode";
+    [Parameter] public string TemplateLabel { get; set; } = "Theme template";
+    [Parameter] public string RoleLabel { get; set; } = "Color role";
+    [Parameter] public EventCallback<long> InputObserved { get; set; }
+    private const string DefaultKey = "SYSTEM:11111111-1111-1111-1111-111111111111";
+    private static readonly (string Key, string Name)[] SystemOptions = [(DefaultKey, "Default"), ("SYSTEM:22222222-2222-2222-2222-222222222222", "Ocean")];
+    private static readonly (string Key, string Name)[] UserOptions = [("USER:33333333-3333-3333-3333-333333333333", "Test copy")];
+    private static readonly string[] Roles = ["Primary", "Secondary", "Tertiary", "Info", "Success", "Warning", "Error", "Dark",
+        "PrimaryContrastText", "SecondaryContrastText", "TertiaryContrastText", "InfoContrastText",
+        "SuccessContrastText", "WarningContrastText", "ErrorContrastText", "DarkContrastText",
+        "Surface", "Background", "BackgroundGray", "AppbarBackground", "AppbarText",
+        "DrawerBackground", "DrawerText", "DrawerIcon", "TextPrimary", "TextSecondary",
+        "TextDisabled", "ActionDefault", "ActionDisabled", "ActionDisabledBackground",
+        "Divider", "DividerLight", "LinesDefault", "LinesInputs", "TableLines", "TableStriped",
+        "TableHover", "OverlayDark", "OverlayLight"];
+    private string mode = "BRIGHT", template = DefaultKey, role = "Primary";
+    private long inputCount;
+    private RenderFragment ThemeOptions() => @<text>
+        @foreach (var option in SystemOptions)
+        {
+            <MudSelectItem T="string" Value="@option.Key">SYSTEM / @option.Name</MudSelectItem>
+        }
+        @foreach (var option in UserOptions)
+        {
+            <MudSelectItem T="string" Value="@option.Key">USER / @option.Name</MudSelectItem>
+        }
+    </text>;
+    private static string SwatchStyle(string value) => $"display:inline-block;width:1em;height:1em;margin-inline-end:.4em;background:{(value == "Primary" ? "#58a6ff" : "#74849b")}";
+    private Task ChangeMode(string value) { mode = value; return InputObserved.InvokeAsync(++inputCount); }
+    private Task ChangeTemplate(string value) { template = value; return InputObserved.InvokeAsync(++inputCount); }
+    private Task ChangeRole(string value) { role = value; return InputObserved.InvokeAsync(++inputCount); }
+}

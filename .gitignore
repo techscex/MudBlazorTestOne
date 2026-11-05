@@ -11,3 +11,4 @@ obj/
 *.pfx
 *.mobileprovision
 node_modules/
+/.codex/tmp/debug-quick-agent/workspace.lock

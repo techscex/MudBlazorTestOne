@@ -1,0 +1,1435 @@
+{
+  "selectReleaseMatrix": {
+    "experiment": "MudSelect Release 2x2: interpreter selection \u00d7 linker selection",
+    "environment": {
+      "sdk": "10.0.402",
+      "workloadSet": "10.0.402.1",
+      "iOSSdkPack": "27.1.10018",
+      "mauiSdkProperty": "10.0.110",
+      "mauiControlsWebViewPackages": "10.0.120",
+      "componentsWeb": "10.0.14",
+      "mudBlazor": "9.12.0",
+      "configuration": "Release",
+      "rid": "iossimulator-arm64",
+      "simulatorModel": "iPhone14ProMax",
+      "simulatorOs": "iOS26.5",
+      "publishAot": false,
+      "useInterpreter": true,
+      "llvm": false,
+      "csharpOptimize": false,
+      "note": "The original sample explicitly sets Optimize=false even for Release; held constant. Release native/AOT settings remain SDK-owned."
+    },
+    "sourceIdentity": {
+      "gitHead": "2c0d86f791bc7d5de348e02fd381119832b4dbc8",
+      "repoInitiallyClean": false,
+      "preexistingChangedEntryCount": 6,
+      "probeSha256": "a0744c8ceebb3b1b66469ab2cc5c057fe7b034de389a7d95e32be34e48dfcda6",
+      "driverSha256": "1b9be7ba99bb2578e96dd0b0f87a20df52a70b86c6b8dc4b211f85a6cdf0f883",
+      "noSampleProductionSourceOrProjectChangeDuringBuilds": true
+    },
+    "cells": [
+      {
+        "cell": "mixed-partial",
+        "configuration": "Release",
+        "interpreter": "all,-MudBlazor",
+        "link": "SdkOnly",
+        "effective": {
+          "NETCoreSdkVersion": "10.0.402",
+          "Configuration": "Release",
+          "RuntimeIdentifier": "iossimulator-arm64",
+          "UseMonoRuntime": "true",
+          "_RunAotCompiler": "true",
+          "UseInterpreter": "true",
+          "MtouchInterpreter": "all,-MudBlazor",
+          "PublishAot": "false",
+          "MtouchUseLlvm": "false",
+          "Optimize": "false",
+          "MtouchLink": "SdkOnly",
+          "TrimMode": "partial",
+          "TargetFramework": "net10.0-ios",
+          "MauiVersion": "10.0.110",
+          "EnableAssemblyILStripping": ""
+        },
+        "generatedRuntimeMode": [
+          "mono_jit_set_aot_mode (MONO_AOT_MODE_INTERP);",
+          "mono_use_llvm = FALSE;"
+        ],
+        "registeredAotModules": [
+          "mono_aot_module_aot_instances",
+          "mono_aot_module_MudBlazor",
+          "mono_aot_module_System_Private_CoreLib"
+        ],
+        "mudAotModuleRegistered": true,
+        "mudAotModuleNativeSymbolPresent": true,
+        "mudAotDataPresent": true,
+        "nativeUuid": "BC4442EF-82BA-3ABA-A2A9-D380E447A3F0",
+        "nativeSha256": "cd25b360f3ec1d0fe08aa68cb73b2de46c41268b11edbdcde46a51f698158f25",
+        "pid": 17394,
+        "startedUtc": "2026-11-05T14:32:29.655219+00:00",
+        "finishedUtc": "2026-11-05T14:32:33.960936+00:00",
+        "buildSeconds": 20.15,
+        "nativeRuntimeVersion": "10.0.13.0",
+        "nativeRuntimeCommit": "4099f83977f4d29604a9aeb971fb0a7bc1d5f699",
+        "completed": false,
+        "nativeExitBeforeCleanup": true,
+        "managedDriverError": false,
+        "probeSha256": "a0744c8ceebb3b1b66469ab2cc5c057fe7b034de389a7d95e32be34e48dfcda6",
+        "driverSha256": "1b9be7ba99bb2578e96dd0b0f87a20df52a70b86c6b8dc4b211f85a6cdf0f883",
+        "linkedMudSha256": "d243a678d47b45e32ad0c4b6065f93a65752b168bc5fecf7d28fdd7e8330d78b",
+        "packagedMudSha256": "d243a678d47b45e32ad0c4b6065f93a65752b168bc5fecf7d28fdd7e8330d78b",
+        "crash": {
+          "captureTimeUtc": "2026-11-05T14:32:31.883400+00:00",
+          "exception": {
+            "codes": "0x0000000000000001, 0x0000000007830320",
+            "rawCodes": [
+              1,
+              126026528
+            ],
+            "type": "EXC_BAD_ACCESS",
+            "signal": "SIGSEGV",
+            "subtype": "KERN_INVALID_ADDRESS at 0x0000000007830320"
+          },
+          "pidMatched": true,
+          "uuidMatched": true,
+          "namedSimulatorMatched": true,
+          "matchingDsym": true,
+          "stack": [
+            {
+              "frame": 0,
+              "module": "<app>",
+              "imageOffset": 7900800,
+              "symbol": "System_Collections_Generic_Dictionary_2_TKey_GSHAREDVT_TValue_GSHAREDVT_TryInsert_TKey_GSHAREDVT_TValue_GSHAREDVT_System_Collections_Generic_InsertionBehavior (in <app>) + 688"
+            },
+            {
+              "frame": 1,
+              "module": "<app>",
+              "imageOffset": 8407884,
+              "symbol": "gsharedvt_trampoline (in <app>) + 220"
+            },
+            {
+              "frame": 2,
+              "module": "<app>",
+              "imageOffset": 8409548,
+              "symbol": "gsharedvt_out_trampoline (in <app>) + 220"
+            },
+            {
+              "frame": 3,
+              "module": "<app>",
+              "imageOffset": 7902900,
+              "symbol": "System_Collections_Generic_Dictionary_2_TKey_GSHAREDVT_TValue_GSHAREDVT_set_Item_TKey_GSHAREDVT_TValue_GSHAREDVT (in <app>) + 132"
+            },
+            {
+              "frame": 4,
+              "module": "<app>",
+              "imageOffset": 8407884,
+              "symbol": "gsharedvt_trampoline (in <app>) + 220"
+            },
+            {
+              "frame": 5,
+              "module": "<app>",
+              "imageOffset": 6273780,
+              "symbol": "MudBlazor_MudSelectContext_1_T_REF_RegisterShadowItem_MudBlazor_MudSelectItem_1_T_REF (in <app>) + 196"
+            },
+            {
+              "frame": 6,
+              "module": "<app>",
+              "imageOffset": 6283680,
+              "symbol": "MudBlazor_MudSelectItem_1_T_REF_OnMudShadowSelectChanged_MudBlazor_State_ParameterChangedEventArgs_1_MudBlazor_IMudShadowSelect (in <app>) + 368"
+            },
+            {
+              "frame": 7,
+              "module": "<app>",
+              "imageOffset": 6817456,
+              "symbol": "MudBlazor_State_ParameterChangedLambdaArgsHandler_1_T_REF_HandleAsync_MudBlazor_State_ParameterChangedEventArgs_1_T_REF_MudBlazor_State_ParameterChangedContext (in <app>) + 112"
+            },
+            {
+              "frame": 8,
+              "module": "<app>",
+              "imageOffset": 6841552,
+              "symbol": "MudBlazor_State_Invocation_ParameterStateInvocationSnapshot_1_T_REF_ParameterChangeHandleAsync_MudBlazor_State_ParameterChangedContext (in <app>) + 304"
+            },
+            {
+              "frame": 9,
+              "module": "<app>",
+              "imageOffset": 6824080,
+              "symbol": "MudBlazor_State_ParameterChangeHandlerUtility___InvokeHandlersAsyncg__InvokeCore_2_0d_MoveNext (in <app>) + 448"
+            },
+            {
+              "frame": 10,
+              "module": "<app>",
+              "imageOffset": 7741540,
+              "symbol": "System_Runtime_CompilerServices_AsyncMethodBuilderCore_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_ (in <app>) + 388"
+            },
+            {
+              "frame": 11,
+              "module": "<app>",
+              "imageOffset": 6823292,
+              "symbol": "MudBlazor_State_ParameterChangeHandlerUtility__InvokeHandlersAsyncg__InvokeCore_2_0_MudBlazor_State_ParameterChangeHandlerUtility_HandlerCollection (in <app>) + 172"
+            },
+            {
+              "frame": 12,
+              "module": "<app>",
+              "imageOffset": 6823104,
+              "symbol": "MudBlazor_State_ParameterChangeHandlerUtility_InvokeHandlersAsync_MudBlazor_State_ParameterChangeHandlerUtility_HandlerCollection (in <app>) + 96"
+            },
+            {
+              "frame": 13,
+              "module": "<app>",
+              "imageOffset": 6831440,
+              "symbol": "MudBlazor_State_ParameterContainer__SetParametersWithHandlersAsyncd__14_MoveNext (in <app>) + 960"
+            },
+            {
+              "frame": 14,
+              "module": "<app>",
+              "imageOffset": 7741540,
+              "symbol": "System_Runtime_CompilerServices_AsyncMethodBuilderCore_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_ (in <app>) + 388"
+            },
+            {
+              "frame": 15,
+              "module": "<app>",
+              "imageOffset": 6826420,
+              "symbol": "MudBlazor_State_ParameterContainer_SetParametersWithHandlersAsync_System_Func_2_Microsoft_AspNetCore_Components_ParameterView_System_Threading_Tasks_Task_Microsoft_AspNetCore_Components_ParameterView (in <app>) + 276"
+            },
+            {
+              "frame": 16,
+              "module": "<app>",
+              "imageOffset": 6826120,
+              "symbol": "MudBlazor_State_ParameterContainer_SetParametersAsync_System_Func_2_Microsoft_AspNetCore_Components_ParameterView_System_Threading_Tasks_Task_Microsoft_AspNetCore_Components_ParameterView (in <app>) + 280"
+            },
+            {
+              "frame": 17,
+              "module": "<app>",
+              "imageOffset": 5580984,
+              "symbol": "MudBlazor_ComponentBaseWithState_SetParametersAsync_Microsoft_AspNetCore_Components_ParameterView (in <app>) + 264"
+            },
+            {
+              "frame": 18,
+              "module": "<app>",
+              "imageOffset": 4991156,
+              "symbol": "wrapper_other_object_gsharedvt_out_sig_intptr_Mono_ValueTuple_4_Mono_ValueTuple_2_object_int_object_int_object__intptr (in <app>) + 132"
+            },
+            {
+              "frame": 19,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1004572,
+              "symbol": "do_jit_call"
+            },
+            {
+              "frame": 20,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 993740,
+              "symbol": "mono_interp_exec_method"
+            },
+            {
+              "frame": 21,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 965696,
+              "symbol": "interp_entry_from_trampoline"
+            },
+            {
+              "frame": 22,
+              "module": "<app>",
+              "imageOffset": 8428128,
+              "symbol": "native_to_interp_trampoline (in <app>) + 112"
+            },
+            {
+              "frame": 23,
+              "module": "libdispatch.dylib",
+              "imageOffset": 114328,
+              "symbol": "_dispatch_client_callout"
+            },
+            {
+              "frame": 24,
+              "module": "libdispatch.dylib",
+              "imageOffset": 231240,
+              "symbol": "<deduplicated_symbol>"
+            },
+            {
+              "frame": 25,
+              "module": "libdispatch.dylib",
+              "imageOffset": 68916,
+              "symbol": "_dispatch_main_queue_drain"
+            },
+            {
+              "frame": 26,
+              "module": "libdispatch.dylib",
+              "imageOffset": 67728,
+              "symbol": "_dispatch_main_queue_callback_4CF"
+            },
+            {
+              "frame": 27,
+              "module": "CoreFoundation",
+              "imageOffset": 604820,
+              "symbol": "__CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__"
+            },
+            {
+              "frame": 28,
+              "module": "CoreFoundation",
+              "imageOffset": 601196,
+              "symbol": "__CFRunLoopRun"
+            },
+            {
+              "frame": 29,
+              "module": "CoreFoundation",
+              "imageOffset": 579844,
+              "symbol": "_CFRunLoopRunSpecificWithOptions"
+            },
+            {
+              "frame": 30,
+              "module": "GraphicsServices",
+              "imageOffset": 10688,
+              "symbol": "GSEventRunModal"
+            },
+            {
+              "frame": 31,
+              "module": "UIKitCore",
+              "imageOffset": 18990284,
+              "symbol": "-[UIApplication _run]"
+            },
+            {
+              "frame": 32,
+              "module": "UIKitCore",
+              "imageOffset": 26306832,
+              "symbol": "UIApplicationMain"
+            },
+            {
+              "frame": 33,
+              "module": "libxamarin-dotnet.dylib",
+              "imageOffset": 6248,
+              "symbol": "xamarin_UIApplicationMain"
+            },
+            {
+              "frame": 34,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1012672,
+              "symbol": "do_icall"
+            },
+            {
+              "frame": 35,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1006096,
+              "symbol": "do_icall_wrapper"
+            },
+            {
+              "frame": 36,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 980504,
+              "symbol": "mono_interp_exec_method"
+            },
+            {
+              "frame": 37,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 967628,
+              "symbol": "interp_runtime_invoke"
+            },
+            {
+              "frame": 38,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 65828,
+              "symbol": "mono_jit_runtime_invoke"
+            },
+            {
+              "frame": 39,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1777192,
+              "symbol": "mono_runtime_invoke_checked"
+            },
+            {
+              "frame": 40,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1803468,
+              "symbol": "mono_runtime_exec_main_checked"
+            },
+            {
+              "frame": 41,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 393144,
+              "symbol": "mono_jit_exec"
+            },
+            {
+              "frame": 42,
+              "module": "libxamarin-dotnet.dylib",
+              "imageOffset": 95708,
+              "symbol": "xamarin_main"
+            },
+            {
+              "frame": 43,
+              "module": "<app>",
+              "imageOffset": 8524016,
+              "symbol": "main (in <app>) (main.arm64.mm:154)"
+            },
+            {
+              "frame": 44,
+              "module": "dyld_sim",
+              "imageOffset": 45284,
+              "symbol": "start_sim"
+            },
+            {
+              "frame": 45,
+              "module": "dyld",
+              "imageOffset": 204416,
+              "symbol": "start"
+            }
+          ],
+          "lastConfirmedPhase": "Starting; no Mounted or driver step",
+          "faultBeforeAnySyntheticInput": true
+        }
+      },
+      {
+        "cell": "all-partial",
+        "configuration": "Release",
+        "interpreter": "all",
+        "link": "SdkOnly",
+        "effective": {
+          "NETCoreSdkVersion": "10.0.402",
+          "Configuration": "Release",
+          "RuntimeIdentifier": "iossimulator-arm64",
+          "UseMonoRuntime": "true",
+          "_RunAotCompiler": "true",
+          "UseInterpreter": "true",
+          "MtouchInterpreter": "all",
+          "PublishAot": "false",
+          "MtouchUseLlvm": "false",
+          "Optimize": "false",
+          "MtouchLink": "SdkOnly",
+          "TrimMode": "partial",
+          "TargetFramework": "net10.0-ios",
+          "MauiVersion": "10.0.110",
+          "EnableAssemblyILStripping": ""
+        },
+        "generatedRuntimeMode": [
+          "mono_jit_set_aot_mode (MONO_AOT_MODE_INTERP);",
+          "mono_use_llvm = FALSE;"
+        ],
+        "registeredAotModules": [
+          "mono_aot_module_System_Private_CoreLib"
+        ],
+        "mudAotModuleRegistered": false,
+        "mudAotModuleNativeSymbolPresent": false,
+        "mudAotDataPresent": false,
+        "nativeUuid": "C63B0D2F-6BBC-32C3-A15D-1B015EE18008",
+        "nativeSha256": "c3155a20ffcd4dd48a3ece4419d94446a54e26f1c912caaa65a3bc3fd4948464",
+        "pid": 17469,
+        "startedUtc": "2026-11-05T14:32:34.533184+00:00",
+        "finishedUtc": "2026-11-05T14:32:41.559545+00:00",
+        "buildSeconds": 11.07,
+        "nativeRuntimeVersion": "10.0.13.0",
+        "nativeRuntimeCommit": "4099f83977f4d29604a9aeb971fb0a7bc1d5f699",
+        "completed": true,
+        "nativeExitBeforeCleanup": false,
+        "managedDriverError": false,
+        "probeSha256": "a0744c8ceebb3b1b66469ab2cc5c057fe7b034de389a7d95e32be34e48dfcda6",
+        "driverSha256": "1b9be7ba99bb2578e96dd0b0f87a20df52a70b86c6b8dc4b211f85a6cdf0f883",
+        "linkedMudSha256": "d243a678d47b45e32ad0c4b6065f93a65752b168bc5fecf7d28fdd7e8330d78b",
+        "packagedMudSha256": "d243a678d47b45e32ad0c4b6065f93a65752b168bc5fecf7d28fdd7e8330d78b",
+        "interaction": {
+          "synthetic": true,
+          "confirmedPopupSelections": 7,
+          "confirmedSameInstanceRerenders": 7,
+          "unmountRemountPairs": 1,
+          "dotNetObservations": {
+            "synthetic": true,
+            "target": "all",
+            "results": [
+              {
+                "phase": "open-and-select",
+                "label": "Mode",
+                "option": "Dark",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 0
+                },
+                "after": {
+                  "mode": "DARK",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 1
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Mode",
+                "option": "Bright",
+                "before": {
+                  "mode": "DARK",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 1
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 2
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Theme template",
+                "option": "SYSTEM / Ocean",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 2
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+                  "role": "Primary",
+                  "count": 3
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Theme template",
+                "option": "USER / Test copy",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+                  "role": "Primary",
+                  "count": 3
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Primary",
+                  "count": 4
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Color role",
+                "option": "Secondary",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Primary",
+                  "count": 4
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Secondary",
+                  "count": 5
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Color role",
+                "option": "Info",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Secondary",
+                  "count": 5
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Info",
+                  "count": 6
+                }
+              },
+              {
+                "phase": "unmounted",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Info",
+                  "count": 6
+                }
+              },
+              {
+                "phase": "remounted",
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 0
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Mode",
+                "option": "Dark",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 0
+                },
+                "after": {
+                  "mode": "DARK",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 1
+                }
+              }
+            ],
+            "final": {
+              "mode": "DARK",
+              "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+              "role": "Primary",
+              "count": 1
+            }
+          }
+        }
+      },
+      {
+        "cell": "mixed-copy",
+        "configuration": "Release",
+        "interpreter": "all,-MudBlazor",
+        "link": "None",
+        "effective": {
+          "NETCoreSdkVersion": "10.0.402",
+          "Configuration": "Release",
+          "RuntimeIdentifier": "iossimulator-arm64",
+          "UseMonoRuntime": "true",
+          "_RunAotCompiler": "true",
+          "UseInterpreter": "true",
+          "MtouchInterpreter": "all,-MudBlazor",
+          "PublishAot": "false",
+          "MtouchUseLlvm": "false",
+          "Optimize": "false",
+          "MtouchLink": "None",
+          "TrimMode": "copy",
+          "TargetFramework": "net10.0-ios",
+          "MauiVersion": "10.0.110",
+          "EnableAssemblyILStripping": ""
+        },
+        "generatedRuntimeMode": [
+          "mono_jit_set_aot_mode (MONO_AOT_MODE_INTERP);",
+          "mono_use_llvm = FALSE;"
+        ],
+        "registeredAotModules": [
+          "mono_aot_module_aot_instances",
+          "mono_aot_module_MudBlazor",
+          "mono_aot_module_System_Private_CoreLib"
+        ],
+        "mudAotModuleRegistered": true,
+        "mudAotModuleNativeSymbolPresent": true,
+        "mudAotDataPresent": true,
+        "nativeUuid": "04890DC3-287C-37D7-A068-7221E90C62CC",
+        "nativeSha256": "34f972c3f463d5bd6ac0584fbb8c8a842960567a0524724b96ba9c5bbaedaee2",
+        "pid": 17573,
+        "startedUtc": "2026-11-05T14:32:42.295803+00:00",
+        "finishedUtc": "2026-11-05T14:32:51.062810+00:00",
+        "buildSeconds": 33.6,
+        "nativeRuntimeVersion": "10.0.13.0",
+        "nativeRuntimeCommit": "4099f83977f4d29604a9aeb971fb0a7bc1d5f699",
+        "completed": false,
+        "nativeExitBeforeCleanup": true,
+        "managedDriverError": false,
+        "probeSha256": "a0744c8ceebb3b1b66469ab2cc5c057fe7b034de389a7d95e32be34e48dfcda6",
+        "driverSha256": "1b9be7ba99bb2578e96dd0b0f87a20df52a70b86c6b8dc4b211f85a6cdf0f883",
+        "linkedMudSha256": "393d45999a57886d13407280ab49a0c686b04d15a2823c0b6565d0f147b161ba",
+        "packagedMudSha256": "393d45999a57886d13407280ab49a0c686b04d15a2823c0b6565d0f147b161ba",
+        "crash": {
+          "captureTimeUtc": "2026-11-05T14:32:44.431400+00:00",
+          "exception": {
+            "codes": "0x0000000000000001, 0x000000000562cd8c",
+            "rawCodes": [
+              1,
+              90361228
+            ],
+            "type": "EXC_BAD_ACCESS",
+            "signal": "SIGSEGV",
+            "subtype": "KERN_INVALID_ADDRESS at 0x000000000562cd8c"
+          },
+          "pidMatched": true,
+          "uuidMatched": true,
+          "namedSimulatorMatched": true,
+          "matchingDsym": true,
+          "stack": [
+            {
+              "frame": 0,
+              "module": "<app>",
+              "imageOffset": 24544336,
+              "symbol": "System_Collections_Generic_Dictionary_2_TKey_GSHAREDVT_TValue_GSHAREDVT_TryInsert_TKey_GSHAREDVT_TValue_GSHAREDVT_System_Collections_Generic_InsertionBehavior (in <app>) + 688"
+            },
+            {
+              "frame": 1,
+              "module": "<app>",
+              "imageOffset": 27249484,
+              "symbol": "gsharedvt_trampoline (in <app>) + 220"
+            },
+            {
+              "frame": 2,
+              "module": "<app>",
+              "imageOffset": 27251148,
+              "symbol": "gsharedvt_out_trampoline (in <app>) + 220"
+            },
+            {
+              "frame": 3,
+              "module": "<app>",
+              "imageOffset": 24548916,
+              "symbol": "System_Collections_Generic_Dictionary_2_TKey_GSHAREDVT_TValue_GSHAREDVT_set_Item_TKey_GSHAREDVT_TValue_GSHAREDVT (in <app>) + 132"
+            },
+            {
+              "frame": 4,
+              "module": "<app>",
+              "imageOffset": 27249484,
+              "symbol": "gsharedvt_trampoline (in <app>) + 220"
+            },
+            {
+              "frame": 5,
+              "module": "<app>",
+              "imageOffset": 17993752,
+              "symbol": "MudBlazor_MudSelectContext_1_T_REF_RegisterShadowItem_MudBlazor_MudSelectItem_1_T_REF (in <app>) + 168"
+            },
+            {
+              "frame": 6,
+              "module": "<app>",
+              "imageOffset": 18002096,
+              "symbol": "MudBlazor_MudSelectItem_1_T_REF_OnMudShadowSelectChanged_MudBlazor_State_ParameterChangedEventArgs_1_MudBlazor_IMudShadowSelect (in <app>) + 368"
+            },
+            {
+              "frame": 7,
+              "module": "<app>",
+              "imageOffset": 19617920,
+              "symbol": "MudBlazor_State_ParameterChangedLambdaArgsHandler_1_T_REF_HandleAsync_MudBlazor_State_ParameterChangedEventArgs_1_T_REF_MudBlazor_State_ParameterChangedContext (in <app>) + 112"
+            },
+            {
+              "frame": 8,
+              "module": "<app>",
+              "imageOffset": 19647520,
+              "symbol": "MudBlazor_State_Invocation_ParameterStateInvocationSnapshot_1_T_REF_ParameterChangeHandleAsync_MudBlazor_State_ParameterChangedContext (in <app>) + 304"
+            },
+            {
+              "frame": 9,
+              "module": "<app>",
+              "imageOffset": 21246224,
+              "symbol": "MudBlazor_State_ParameterChangeHandlerUtility___InvokeHandlersAsyncg__InvokeCore_2_0d_MoveNext (in <app>) + 448"
+            },
+            {
+              "frame": 10,
+              "module": "<app>",
+              "imageOffset": 15749188,
+              "symbol": "System_Runtime_CompilerServices_AsyncMethodBuilderCore_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_ (in <app>) + 388"
+            },
+            {
+              "frame": 11,
+              "module": "<app>",
+              "imageOffset": 19630940,
+              "symbol": "MudBlazor_State_ParameterChangeHandlerUtility__InvokeHandlersAsyncg__InvokeCore_2_0_MudBlazor_State_ParameterChangeHandlerUtility_HandlerCollection (in <app>) + 172"
+            },
+            {
+              "frame": 12,
+              "module": "<app>",
+              "imageOffset": 19630752,
+              "symbol": "MudBlazor_State_ParameterChangeHandlerUtility_InvokeHandlersAsync_MudBlazor_State_ParameterChangeHandlerUtility_HandlerCollection (in <app>) + 96"
+            },
+            {
+              "frame": 13,
+              "module": "<app>",
+              "imageOffset": 21248992,
+              "symbol": "MudBlazor_State_ParameterContainer__SetParametersWithHandlersAsyncd__14_MoveNext (in <app>) + 960"
+            },
+            {
+              "frame": 14,
+              "module": "<app>",
+              "imageOffset": 15749188,
+              "symbol": "System_Runtime_CompilerServices_AsyncMethodBuilderCore_Start_TStateMachine_GSHAREDVT_TStateMachine_GSHAREDVT_ (in <app>) + 388"
+            },
+            {
+              "frame": 15,
+              "module": "<app>",
+              "imageOffset": 19632276,
+              "symbol": "MudBlazor_State_ParameterContainer_SetParametersWithHandlersAsync_System_Func_2_Microsoft_AspNetCore_Components_ParameterView_System_Threading_Tasks_Task_Microsoft_AspNetCore_Components_ParameterView (in <app>) + 276"
+            },
+            {
+              "frame": 16,
+              "module": "<app>",
+              "imageOffset": 19631976,
+              "symbol": "MudBlazor_State_ParameterContainer_SetParametersAsync_System_Func_2_Microsoft_AspNetCore_Components_ParameterView_System_Threading_Tasks_Task_Microsoft_AspNetCore_Components_ParameterView (in <app>) + 280"
+            },
+            {
+              "frame": 17,
+              "module": "<app>",
+              "imageOffset": 16633912,
+              "symbol": "MudBlazor_ComponentBaseWithState_SetParametersAsync_Microsoft_AspNetCore_Components_ParameterView (in <app>) + 264"
+            },
+            {
+              "frame": 18,
+              "module": "<app>",
+              "imageOffset": 14753172,
+              "symbol": "wrapper_other_object_gsharedvt_out_sig_intptr_Mono_ValueTuple_4_Mono_ValueTuple_2_object_int_object_int_object__intptr (in <app>) + 132"
+            },
+            {
+              "frame": 19,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1004572,
+              "symbol": "do_jit_call"
+            },
+            {
+              "frame": 20,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 993740,
+              "symbol": "mono_interp_exec_method"
+            },
+            {
+              "frame": 21,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 965696,
+              "symbol": "interp_entry_from_trampoline"
+            },
+            {
+              "frame": 22,
+              "module": "<app>",
+              "imageOffset": 27269728,
+              "symbol": "native_to_interp_trampoline (in <app>) + 112"
+            },
+            {
+              "frame": 23,
+              "module": "libdispatch.dylib",
+              "imageOffset": 114328,
+              "symbol": "_dispatch_client_callout"
+            },
+            {
+              "frame": 24,
+              "module": "libdispatch.dylib",
+              "imageOffset": 231240,
+              "symbol": "<deduplicated_symbol>"
+            },
+            {
+              "frame": 25,
+              "module": "libdispatch.dylib",
+              "imageOffset": 68916,
+              "symbol": "_dispatch_main_queue_drain"
+            },
+            {
+              "frame": 26,
+              "module": "libdispatch.dylib",
+              "imageOffset": 67728,
+              "symbol": "_dispatch_main_queue_callback_4CF"
+            },
+            {
+              "frame": 27,
+              "module": "CoreFoundation",
+              "imageOffset": 604820,
+              "symbol": "__CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__"
+            },
+            {
+              "frame": 28,
+              "module": "CoreFoundation",
+              "imageOffset": 601196,
+              "symbol": "__CFRunLoopRun"
+            },
+            {
+              "frame": 29,
+              "module": "CoreFoundation",
+              "imageOffset": 579844,
+              "symbol": "_CFRunLoopRunSpecificWithOptions"
+            },
+            {
+              "frame": 30,
+              "module": "GraphicsServices",
+              "imageOffset": 10688,
+              "symbol": "GSEventRunModal"
+            },
+            {
+              "frame": 31,
+              "module": "UIKitCore",
+              "imageOffset": 18990284,
+              "symbol": "-[UIApplication _run]"
+            },
+            {
+              "frame": 32,
+              "module": "UIKitCore",
+              "imageOffset": 26306832,
+              "symbol": "UIApplicationMain"
+            },
+            {
+              "frame": 33,
+              "module": "libxamarin-dotnet.dylib",
+              "imageOffset": 6248,
+              "symbol": "xamarin_UIApplicationMain"
+            },
+            {
+              "frame": 34,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1012672,
+              "symbol": "do_icall"
+            },
+            {
+              "frame": 35,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1006096,
+              "symbol": "do_icall_wrapper"
+            },
+            {
+              "frame": 36,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 980504,
+              "symbol": "mono_interp_exec_method"
+            },
+            {
+              "frame": 37,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 967628,
+              "symbol": "interp_runtime_invoke"
+            },
+            {
+              "frame": 38,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 65828,
+              "symbol": "mono_jit_runtime_invoke"
+            },
+            {
+              "frame": 39,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1777192,
+              "symbol": "mono_runtime_invoke_checked"
+            },
+            {
+              "frame": 40,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 1803468,
+              "symbol": "mono_runtime_exec_main_checked"
+            },
+            {
+              "frame": 41,
+              "module": "libmonosgen-2.0.dylib",
+              "imageOffset": 393144,
+              "symbol": "mono_jit_exec"
+            },
+            {
+              "frame": 42,
+              "module": "libxamarin-dotnet.dylib",
+              "imageOffset": 95708,
+              "symbol": "xamarin_main"
+            },
+            {
+              "frame": 43,
+              "module": "<app>",
+              "imageOffset": 28177288,
+              "symbol": "main (in <app>) (main.arm64.mm:296)"
+            },
+            {
+              "frame": 44,
+              "module": "dyld_sim",
+              "imageOffset": 45284,
+              "symbol": "start_sim"
+            },
+            {
+              "frame": 45,
+              "module": "dyld",
+              "imageOffset": 204416,
+              "symbol": "start"
+            }
+          ],
+          "lastConfirmedPhase": "Starting; no Mounted or driver step",
+          "faultBeforeAnySyntheticInput": true
+        }
+      },
+      {
+        "cell": "all-copy",
+        "configuration": "Release",
+        "interpreter": "all",
+        "link": "None",
+        "effective": {
+          "NETCoreSdkVersion": "10.0.402",
+          "Configuration": "Release",
+          "RuntimeIdentifier": "iossimulator-arm64",
+          "UseMonoRuntime": "true",
+          "_RunAotCompiler": "true",
+          "UseInterpreter": "true",
+          "MtouchInterpreter": "all",
+          "PublishAot": "false",
+          "MtouchUseLlvm": "false",
+          "Optimize": "false",
+          "MtouchLink": "None",
+          "TrimMode": "copy",
+          "TargetFramework": "net10.0-ios",
+          "MauiVersion": "10.0.110",
+          "EnableAssemblyILStripping": ""
+        },
+        "generatedRuntimeMode": [
+          "mono_jit_set_aot_mode (MONO_AOT_MODE_INTERP);",
+          "mono_use_llvm = FALSE;"
+        ],
+        "registeredAotModules": [
+          "mono_aot_module_System_Private_CoreLib"
+        ],
+        "mudAotModuleRegistered": false,
+        "mudAotModuleNativeSymbolPresent": false,
+        "mudAotDataPresent": false,
+        "nativeUuid": "90BE6760-8D08-3997-8820-86583492238B",
+        "nativeSha256": "ca78c8846f7a82d126394ea4a1058a09501d4509e8713640c4d09938bd33c2fe",
+        "pid": 17684,
+        "startedUtc": "2026-11-05T14:32:51.709847+00:00",
+        "finishedUtc": "2026-11-05T14:32:58.754469+00:00",
+        "buildSeconds": 7.04,
+        "nativeRuntimeVersion": "10.0.13.0",
+        "nativeRuntimeCommit": "4099f83977f4d29604a9aeb971fb0a7bc1d5f699",
+        "completed": true,
+        "nativeExitBeforeCleanup": false,
+        "managedDriverError": false,
+        "probeSha256": "a0744c8ceebb3b1b66469ab2cc5c057fe7b034de389a7d95e32be34e48dfcda6",
+        "driverSha256": "1b9be7ba99bb2578e96dd0b0f87a20df52a70b86c6b8dc4b211f85a6cdf0f883",
+        "linkedMudSha256": "393d45999a57886d13407280ab49a0c686b04d15a2823c0b6565d0f147b161ba",
+        "packagedMudSha256": "393d45999a57886d13407280ab49a0c686b04d15a2823c0b6565d0f147b161ba",
+        "interaction": {
+          "synthetic": true,
+          "confirmedPopupSelections": 7,
+          "confirmedSameInstanceRerenders": 7,
+          "unmountRemountPairs": 1,
+          "dotNetObservations": {
+            "synthetic": true,
+            "target": "all",
+            "results": [
+              {
+                "phase": "open-and-select",
+                "label": "Mode",
+                "option": "Dark",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 0
+                },
+                "after": {
+                  "mode": "DARK",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 1
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Mode",
+                "option": "Bright",
+                "before": {
+                  "mode": "DARK",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 1
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 2
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Theme template",
+                "option": "SYSTEM / Ocean",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 2
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+                  "role": "Primary",
+                  "count": 3
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Theme template",
+                "option": "USER / Test copy",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+                  "role": "Primary",
+                  "count": 3
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Primary",
+                  "count": 4
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Color role",
+                "option": "Secondary",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Primary",
+                  "count": 4
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Secondary",
+                  "count": 5
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Color role",
+                "option": "Info",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Secondary",
+                  "count": 5
+                },
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Info",
+                  "count": 6
+                }
+              },
+              {
+                "phase": "unmounted",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "USER:33333333-3333-3333-3333-333333333333",
+                  "role": "Info",
+                  "count": 6
+                }
+              },
+              {
+                "phase": "remounted",
+                "after": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 0
+                }
+              },
+              {
+                "phase": "open-and-select",
+                "label": "Mode",
+                "option": "Dark",
+                "before": {
+                  "mode": "BRIGHT",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 0
+                },
+                "after": {
+                  "mode": "DARK",
+                  "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+                  "role": "Primary",
+                  "count": 1
+                }
+              }
+            ],
+            "final": {
+              "mode": "DARK",
+              "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+              "role": "Primary",
+              "count": 1
+            }
+          }
+        }
+      }
+    ],
+    "conclusions": {
+      "mixedFailuresWithBothLinkModes": true,
+      "allSelectionPassesWithBothLinkModes": true,
+      "linkNoneAloneDidNotAvoidMixedFailure": true,
+      "nativeFaultFamily": "Dictionary.TryInsert \u2192 gsharedvt \u2192 Dictionary.set_Item \u2192 MudSelectContext.RegisterShadowItem \u2192 MudSelectItem.OnMudShadowSelectChanged",
+      "exactUnderlyingRuntimeAbiCauseProven": false,
+      "physicalReleaseFixProven": false
+    },
+    "upstreamEvaluation": {
+      "issue": "https://github.com/MudBlazor/MudBlazor/issues/6558",
+      "originalRecipe": "MtouchLink=None plus UseInterpreter=True",
+      "propertySemantics": "Explicit MtouchInterpreter overrides UseInterpreter; all was selected explicitly for the recipe cells.",
+      "measuredResult": "The all+None recipe cell passed; all+SdkOnly also passed. None with mixed all,-MudBlazor still crashed.",
+      "limits": "This isolates behavior of this sample/SDK/runtime/simulator, not every MudBlazor issue or physical TestFlight app."
+    },
+    "excludedAttempts": [],
+    "inputQualification": "Mixed failures happen during mount before any synthetic driver step. Passing all cells use actual rendered controls with synthetic mousedown/option-click events and checked .NET outputs, not finger/native gestures.",
+    "limits": [
+      "No main Blade source, policy, counter, signing or outputs changed.",
+      "No SDK/workload/package update or NativeAOT switch.",
+      "CoreLib native AOT module remains registered even with all selection; do not equate it with zero native code.",
+      "Four one-pass cells, no physical hardware experiment or long-duration stress.",
+      "The exact reason Release differs from earlier Debug for this fixed sample is not established by this 2x2."
+    ]
+  },
+  "sliderReleaseMatrix": {
+    "experiment": "Two matched sliders \u00d7 four frozen Release select-policy artifacts",
+    "caseDefinitions": {
+      "int-bind": "MudSlider<int>, plain generated synchronous @bind-Value, no ValueLabel/custom setter/after/counter",
+      "double-task-label": "MudSlider<double>, explicit finite/clamp/value/count callback returning Task.CompletedTask, ValueLabel=true"
+    },
+    "sharedParameters": "initial180;Min0;Max360;Step1;Immediate=true",
+    "inputKind": "Explicitly synthetic actual rendered DOM range input; not finger drag",
+    "configurationAndArtifactReuse": "The exact four already qualified Release artifacts were reused without any source edit or rebuild. See qualified-matrix.json.",
+    "qualifiedRuns": [
+      {
+        "cell": "mixed-partial",
+        "case": "int-bind",
+        "configuration": "Release",
+        "pid": 20950,
+        "nativeUuid": "BC4442EF-82BA-3ABA-A2A9-D380E447A3F0",
+        "startedUtc": "2026-11-05T14:39:53.906856+00:00",
+        "finishedUtc": "2026-11-05T14:39:59.938494+00:00",
+        "completed": true,
+        "sameActualRangeElement": true,
+        "observedDotNetValues": [
+          {
+            "input": "181",
+            "observed": "181"
+          },
+          {
+            "input": "220",
+            "observed": "220"
+          },
+          {
+            "input": "140",
+            "observed": "140"
+          },
+          {
+            "input": "260",
+            "observed": "260"
+          }
+        ],
+        "nativeExit": false,
+        "freshMatchedCrash": false,
+        "managedDriverError": false
+      },
+      {
+        "cell": "mixed-partial",
+        "case": "double-task-label",
+        "configuration": "Release",
+        "pid": 21025,
+        "nativeUuid": "BC4442EF-82BA-3ABA-A2A9-D380E447A3F0",
+        "startedUtc": "2026-11-05T14:40:00.062153+00:00",
+        "finishedUtc": "2026-11-05T14:40:05.089535+00:00",
+        "completed": true,
+        "sameActualRangeElement": true,
+        "observedDotNetValues": [
+          {
+            "input": "181",
+            "observed": "181"
+          },
+          {
+            "input": "220",
+            "observed": "220"
+          },
+          {
+            "input": "140",
+            "observed": "140"
+          },
+          {
+            "input": "260",
+            "observed": "260"
+          }
+        ],
+        "nativeExit": false,
+        "freshMatchedCrash": false,
+        "managedDriverError": false
+      },
+      {
+        "cell": "all-partial",
+        "case": "int-bind",
+        "configuration": "Release",
+        "pid": 21115,
+        "nativeUuid": "C63B0D2F-6BBC-32C3-A15D-1B015EE18008",
+        "startedUtc": "2026-11-05T14:40:05.679598+00:00",
+        "finishedUtc": "2026-11-05T14:40:10.677336+00:00",
+        "completed": true,
+        "sameActualRangeElement": true,
+        "observedDotNetValues": [
+          {
+            "input": "181",
+            "observed": "181"
+          },
+          {
+            "input": "220",
+            "observed": "220"
+          },
+          {
+            "input": "140",
+            "observed": "140"
+          },
+          {
+            "input": "260",
+            "observed": "260"
+          }
+        ],
+        "nativeExit": false,
+        "freshMatchedCrash": false,
+        "managedDriverError": false
+      },
+      {
+        "cell": "all-partial",
+        "case": "double-task-label",
+        "configuration": "Release",
+        "pid": 21185,
+        "nativeUuid": "C63B0D2F-6BBC-32C3-A15D-1B015EE18008",
+        "startedUtc": "2026-11-05T14:40:10.812561+00:00",
+        "finishedUtc": "2026-11-05T14:40:15.821254+00:00",
+        "completed": true,
+        "sameActualRangeElement": true,
+        "observedDotNetValues": [
+          {
+            "input": "181",
+            "observed": "181"
+          },
+          {
+            "input": "220",
+            "observed": "220"
+          },
+          {
+            "input": "140",
+            "observed": "140"
+          },
+          {
+            "input": "260",
+            "observed": "260"
+          }
+        ],
+        "nativeExit": false,
+        "freshMatchedCrash": false,
+        "managedDriverError": false
+      },
+      {
+        "cell": "mixed-copy",
+        "case": "int-bind",
+        "configuration": "Release",
+        "pid": 21285,
+        "nativeUuid": "04890DC3-287C-37D7-A068-7221E90C62CC",
+        "startedUtc": "2026-11-05T14:40:16.580681+00:00",
+        "finishedUtc": "2026-11-05T14:40:22.594683+00:00",
+        "completed": true,
+        "sameActualRangeElement": true,
+        "observedDotNetValues": [
+          {
+            "input": "181",
+            "observed": "181"
+          },
+          {
+            "input": "220",
+            "observed": "220"
+          },
+          {
+            "input": "140",
+            "observed": "140"
+          },
+          {
+            "input": "260",
+            "observed": "260"
+          }
+        ],
+        "nativeExit": false,
+        "freshMatchedCrash": false,
+        "managedDriverError": false
+      },
+      {
+        "cell": "mixed-copy",
+        "case": "double-task-label",
+        "configuration": "Release",
+        "pid": 21349,
+        "nativeUuid": "04890DC3-287C-37D7-A068-7221E90C62CC",
+        "startedUtc": "2026-11-05T14:40:22.737395+00:00",
+        "finishedUtc": "2026-11-05T14:40:27.745422+00:00",
+        "completed": true,
+        "sameActualRangeElement": true,
+        "observedDotNetValues": [
+          {
+            "input": "181",
+            "observed": "181"
+          },
+          {
+            "input": "220",
+            "observed": "220"
+          },
+          {
+            "input": "140",
+            "observed": "140"
+          },
+          {
+            "input": "260",
+            "observed": "260"
+          }
+        ],
+        "nativeExit": false,
+        "freshMatchedCrash": false,
+        "managedDriverError": false
+      },
+      {
+        "cell": "all-copy",
+        "case": "int-bind",
+        "configuration": "Release",
+        "pid": 21441,
+        "nativeUuid": "90BE6760-8D08-3997-8820-86583492238B",
+        "startedUtc": "2026-11-05T14:40:28.389127+00:00",
+        "finishedUtc": "2026-11-05T14:40:33.376579+00:00",
+        "completed": true,
+        "sameActualRangeElement": true,
+        "observedDotNetValues": [
+          {
+            "input": "181",
+            "observed": "181"
+          },
+          {
+            "input": "220",
+            "observed": "220"
+          },
+          {
+            "input": "140",
+            "observed": "140"
+          },
+          {
+            "input": "260",
+            "observed": "260"
+          }
+        ],
+        "nativeExit": false,
+        "freshMatchedCrash": false,
+        "managedDriverError": false
+      },
+      {
+        "cell": "all-copy",
+        "case": "double-task-label",
+        "configuration": "Release",
+        "pid": 21509,
+        "nativeUuid": "90BE6760-8D08-3997-8820-86583492238B",
+        "startedUtc": "2026-11-05T14:40:33.509791+00:00",
+        "finishedUtc": "2026-11-05T14:40:38.543793+00:00",
+        "completed": true,
+        "sameActualRangeElement": true,
+        "observedDotNetValues": [
+          {
+            "input": "181",
+            "observed": "181"
+          },
+          {
+            "input": "220",
+            "observed": "220"
+          },
+          {
+            "input": "140",
+            "observed": "140"
+          },
+          {
+            "input": "260",
+            "observed": "260"
+          }
+        ],
+        "nativeExit": false,
+        "freshMatchedCrash": false,
+        "managedDriverError": false
+      }
+    ],
+    "runCount": 8,
+    "allPassed": true,
+    "confirmedDotNetValueChanges": 32,
+    "excludedDriverFailures": 0,
+    "limits": [
+      "Not physical Release/TestFlight proof.",
+      "Not the earlier full-AOT Debug test; those failures remain separate.",
+      "One pass per case/cell, no long-duration/stress or all-component claim.",
+      "Passing sliders do not repair the simultaneously reproduced stock-select mount faults in mixed cells."
+    ]
+  }
+}

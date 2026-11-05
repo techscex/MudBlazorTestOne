@@ -1,8 +1,10 @@
 @page "/select-only-repro"
 @page "/select-only-repro/{AutoCase}"
+@inject IJSRuntime JS
+@using System.Reflection
 
-<h1>Build 647 theme dropdown registration</h1>
-<p>Build 647 crashed while registering stock MudSelect&lt;string&gt; options when opening the theme editor. Run all three or isolate one selector. Only test values are used.</p>
+<h1>Build647 theme dropdown registration and interaction</h1>
+<p>Only synthetic test values are used. Manual entry mounts nothing until Run. The optional app-local driver uses synthetic clicks, not finger input.</p>
 @if (!running)
 {
     <label for="selector-case">Selector to mount</label>
@@ -13,36 +15,71 @@
         <option value="role">Color role — generated items with swatches</option>
         <option value="native">Control — native HTML select</option>
     </select>
-    <button @onclick="Start">Run selected case</button>
+    <button id="repro-mount" @onclick="Start">Run selected case</button>
 }
 else
 {
     <p>Mounted case: <strong>@selected</strong></p>
+    <section id="select-probe">
     @if (selected == "native")
     {
-        <label>Mode <select @bind="nativeValue"><option value="BRIGHT">Bright</option><option value="DARK">Dark</option></select></label>
+        <label>Mode <select id="native-mode" @bind="nativeValue"><option value="BRIGHT">Bright</option><option value="DARK">Dark</option></select></label>
     }
     else
     {
-        <MudSelect647Probe Target="@selected" InputObserved="OnInput" />
+        <MudSelect647Probe @ref="probe" Target="@selected" InputObserved="OnInput" />
     }
-    <p>Stock selector changes: <output>@count</output></p>
-    <button @onclick="Reset">Stop and choose another case</button>
+    </section>
+    <p>Stock selector changes: <output id="probe-count">@count</output></p>
+    <dl><dt>Mode .NET field</dt><dd><output id="probe-mode">@ReadField("mode")</output></dd>
+        <dt>Template .NET field</dt><dd><output id="probe-template">@ReadField("template")</output></dd>
+        <dt>Role .NET field</dt><dd><output id="probe-role">@ReadField("role")</output></dd></dl>
+    <button id="repro-rerender" @onclick="ObserveAgain">Observe/rerender same instance</button>
+    <button id="repro-unmount" @onclick="Reset">Stop and choose another case</button>
 }
+<p id="selector-driver-result">@driverResult</p>
 @code {
     [Parameter] public string? AutoCase { get; set; }
+    [SupplyParameterFromQuery(Name = "drive")] public bool Drive { get; set; }
     private string selected = "all", nativeValue = "BRIGHT";
-    private bool running, markedMounted;
+    private bool running, markedMounted, automationStarted;
     private long count;
+    private MudSelect647Probe? probe;
+    private string driverResult = "Manual input; no synthetic interaction requested.";
     protected override void OnInitialized()
     {
         if (AutoCase is "all" or "mode" or "template" or "role" or "native") { selected = AutoCase; Start(); }
     }
     private void Start() { ReproDiagnostics.Mark("Starting", "select-" + selected); running = true; markedMounted = false; count = 0; }
-    protected override void OnAfterRender(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (running && !markedMounted) { ReproDiagnostics.Mark("Mounted", "select-" + selected); markedMounted = true; }
+        if (running && !markedMounted)
+        {
+            ReproDiagnostics.Mark("Mounted", "select-" + selected); markedMounted = true;
+            // The component reference exists now. Observe without changing the
+            // portable probe's markup, ValueChanged callbacks or state setters.
+            StateHasChanged(); return;
+        }
+        if (!Drive || !running || automationStarted) return;
+        automationStarted = true;
+        ReproDiagnostics.Mark("selector-interaction-start", "select-" + selected, "synthetic click pipeline");
+        try
+        {
+            using var observer = DotNetObjectReference.Create(this);
+            driverResult = await JS.InvokeAsync<string>("reproSelectDriver.run", selected, observer);
+            ReproDiagnostics.Mark("selector-interaction-completed", "select-" + selected, driverResult);
+        }
+        catch (Exception error)
+        {
+            driverResult = error.ToString();
+            ReproDiagnostics.Mark("selector-interaction-managed-error", "select-" + selected, driverResult);
+        }
+        StateHasChanged();
     }
+    [JSInvokable] public void RecordSelectPhase(string phase) => ReproDiagnostics.Mark("selector-step", "select-" + selected, phase);
+    private string ReadField(string name) => selected == "native" && name == "mode" ? nativeValue
+        : probe is null ? string.Empty : typeof(MudSelect647Probe).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)?.GetValue(probe)?.ToString() ?? string.Empty;
     private void OnInput(long value) { count = value; ReproDiagnostics.Mark("Input", "select-" + selected, value.ToString()); }
-    private void Reset() { ReproDiagnostics.Mark("Closed", "select-" + selected); running = false; }
+    private void ObserveAgain() => ReproDiagnostics.Mark("Rerender", "select-" + selected, count.ToString());
+    private void Reset() { ReproDiagnostics.Mark("Closed", "select-" + selected); running = false; markedMounted = false; probe = null; }
 }

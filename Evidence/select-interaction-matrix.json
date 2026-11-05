@@ -1,0 +1,984 @@
+{
+  "environment": {
+    "sdk": "10.0.402",
+    "workloadSet": "10.0.402.1",
+    "configuration": "Debug",
+    "rid": "iossimulator-arm64",
+    "mauiWorkloadSdk": "10.0.110",
+    "mauiPackages": "10.0.120",
+    "componentsWeb": "10.0.14",
+    "mudBlazor": "9.12.0",
+    "simulatorModel": "iPhone14ProMax",
+    "simulatorOS": "iOS26.5",
+    "optimize": false,
+    "llvm": false,
+    "trimMode": "partial"
+  },
+  "inputKind": "Explicitly synthetic DOM mousedown/mouseup/click on visible real MudSelect; native HTML control uses native value setter/change event. Not finger or trusted native input.",
+  "policies": {
+    "full": "empty MtouchInterpreter; generated MONO_AOT_MODE_FULL",
+    "blade-mixed": "all,-MudBlazor; generated MONO_AOT_MODE_INTERP"
+  },
+  "portableProbeSha256": "a0744c8ceebb3b1b66469ab2cc5c057fe7b034de389a7d95e32be34e48dfcda6",
+  "portableProbeByteIdenticalToBlade": true,
+  "nativeArtifacts": [
+    {
+      "mode": "full",
+      "nativeUuid": "3560E66B-D2F1-3A43-A7FE-D69D2B696F02",
+      "runtime": "10.0.13.0",
+      "nativeRuntimeBuild": "10.0.1326.50504",
+      "runtimeCommit": "4099f83977f4d29604a9aeb971fb0a7bc1d5f699"
+    },
+    {
+      "mode": "blade-mixed",
+      "nativeUuid": "30C61D3A-86A9-3F87-96D5-6C516147D31C",
+      "runtime": "10.0.13.0",
+      "nativeRuntimeBuild": "10.0.1326.50504",
+      "runtimeCommit": "4099f83977f4d29604a9aeb971fb0a7bc1d5f699"
+    }
+  ],
+  "phaseTotals": {
+    "before-popup-open": 32,
+    "popup-open": 32,
+    "before-selection": 32,
+    "selection-accepted": 32,
+    "same-instance-rerender": 32,
+    "unmounted": 10,
+    "remounted": 10
+  },
+  "totalCompletedRuns": 10,
+  "totalConfirmedValueChanges": 36,
+  "results": [
+    {
+      "runtimePolicy": "full",
+      "case": "mode",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 3,
+      "observations": [
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Dark",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Bright",
+          "before": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Dark",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "DARK",
+        "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+        "role": "Primary",
+        "count": 1
+      }
+    },
+    {
+      "runtimePolicy": "full",
+      "case": "template",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 3,
+      "observations": [
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "SYSTEM / Ocean",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 1
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "USER / Test copy",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 1
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "SYSTEM / Ocean",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 1
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "BRIGHT",
+        "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+        "role": "Primary",
+        "count": 1
+      }
+    },
+    {
+      "runtimePolicy": "full",
+      "case": "role",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 3,
+      "observations": [
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Secondary",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Secondary",
+            "count": 1
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Info",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Secondary",
+            "count": 1
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Info",
+            "count": 2
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Info",
+            "count": 2
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Secondary",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Secondary",
+            "count": 1
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "BRIGHT",
+        "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+        "role": "Secondary",
+        "count": 1
+      }
+    },
+    {
+      "runtimePolicy": "full",
+      "case": "all",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 7,
+      "observations": [
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Dark",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Bright",
+          "before": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "SYSTEM / Ocean",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 2
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 3
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "USER / Test copy",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 3
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Primary",
+            "count": 4
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Secondary",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Primary",
+            "count": 4
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Secondary",
+            "count": 5
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Info",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Secondary",
+            "count": 5
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Info",
+            "count": 6
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Info",
+            "count": 6
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Dark",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "DARK",
+        "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+        "role": "Primary",
+        "count": 1
+      }
+    },
+    {
+      "runtimePolicy": "full",
+      "case": "native",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 2,
+      "observations": [
+        {
+          "phase": "native-change",
+          "after": {
+            "mode": "DARK",
+            "template": "",
+            "role": "",
+            "count": 0
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "DARK",
+            "template": "",
+            "role": "",
+            "count": 0
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "DARK",
+            "template": "",
+            "role": "",
+            "count": 0
+          }
+        },
+        {
+          "phase": "native-repeat-after-remount",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "",
+            "role": "",
+            "count": 0
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "BRIGHT",
+        "template": "",
+        "role": "",
+        "count": 0
+      }
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "mode",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 3,
+      "observations": [
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Dark",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Bright",
+          "before": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Dark",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "DARK",
+        "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+        "role": "Primary",
+        "count": 1
+      }
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "template",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 3,
+      "observations": [
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "SYSTEM / Ocean",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 1
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "USER / Test copy",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 1
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "SYSTEM / Ocean",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 1
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "BRIGHT",
+        "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+        "role": "Primary",
+        "count": 1
+      }
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "role",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 3,
+      "observations": [
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Secondary",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Secondary",
+            "count": 1
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Info",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Secondary",
+            "count": 1
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Info",
+            "count": 2
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Info",
+            "count": 2
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Secondary",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Secondary",
+            "count": 1
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "BRIGHT",
+        "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+        "role": "Secondary",
+        "count": 1
+      }
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "all",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 7,
+      "observations": [
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Dark",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Bright",
+          "before": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 2
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "SYSTEM / Ocean",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 2
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 3
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Theme template",
+          "option": "USER / Test copy",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:22222222-2222-2222-2222-222222222222",
+            "role": "Primary",
+            "count": 3
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Primary",
+            "count": 4
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Secondary",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Primary",
+            "count": 4
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Secondary",
+            "count": 5
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Color role",
+          "option": "Info",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Secondary",
+            "count": 5
+          },
+          "after": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Info",
+            "count": 6
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "USER:33333333-3333-3333-3333-333333333333",
+            "role": "Info",
+            "count": 6
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          }
+        },
+        {
+          "phase": "open-and-select",
+          "label": "Mode",
+          "option": "Dark",
+          "before": {
+            "mode": "BRIGHT",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 0
+          },
+          "after": {
+            "mode": "DARK",
+            "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+            "role": "Primary",
+            "count": 1
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "DARK",
+        "template": "SYSTEM:11111111-1111-1111-1111-111111111111",
+        "role": "Primary",
+        "count": 1
+      }
+    },
+    {
+      "runtimePolicy": "blade-mixed",
+      "case": "native",
+      "completed": true,
+      "nativeExitBeforeControlledCleanup": false,
+      "matchedFreshCrash": false,
+      "confirmedSelections": 2,
+      "observations": [
+        {
+          "phase": "native-change",
+          "after": {
+            "mode": "DARK",
+            "template": "",
+            "role": "",
+            "count": 0
+          }
+        },
+        {
+          "phase": "unmounted",
+          "before": {
+            "mode": "DARK",
+            "template": "",
+            "role": "",
+            "count": 0
+          }
+        },
+        {
+          "phase": "remounted",
+          "after": {
+            "mode": "DARK",
+            "template": "",
+            "role": "",
+            "count": 0
+          }
+        },
+        {
+          "phase": "native-repeat-after-remount",
+          "after": {
+            "mode": "BRIGHT",
+            "template": "",
+            "role": "",
+            "count": 0
+          }
+        }
+      ],
+      "finalDotNetValues": {
+        "mode": "BRIGHT",
+        "template": "",
+        "role": "",
+        "count": 0
+      }
+    }
+  ],
+  "limits": [
+    "No physical device or Release run.",
+    "No reproduction of the physical647 Dictionary/MudSelectContext.RegisterShadowItem SIGSEGV.",
+    "Synthetic input is not finger/drag coverage.",
+    "Mounting all generic cases into the sample assembly can affect AOT specialization coverage.",
+    "Results do not establish absence of a runtime bug or explain all Blade/sample differences."
+  ],
+  "harnessCorrections": [
+    "Excluded initial click-only attempt on hidden input; official Mud9.12 source handles mousedown on visible control.",
+    "Excluded native remount assertion that incorrectly expected child-state reset; native value belongs to surviving parent."
+  ]
+}

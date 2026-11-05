@@ -5,8 +5,7 @@ AGENT-CONTROLLED README
 Minimal, standalone **iOS .NET MAUI Blazor Hybrid** application for the supplied
 MudBlazor slider crash, with App-owned controls for comparison. It has one
 project, no project references, no backend, no authentication and no theme-preview
-callbacks. Every control has a visible component-name heading and an Owned or
-MudBlazor label.
+callbacks. Controls are labelled by implementation.
 
 **A crash is reproduced in Debug with Mono AOT enabled.** On an Apple Silicon
 iPhone 14 Pro Max simulator running iOS 26.5, dragging the color picker's hue
@@ -88,8 +87,7 @@ xcrun simctl install "$repro_simulator_id" bin/Debug/net10.0-ios/iossimulator-ar
 xcrun simctl launch "$repro_simulator_id" com.example.mudsliderhybridrepro
 ```
 
-The simulator requires no developer signing profile. The project's bundle ID is
-an example. For a physical iPhone, choose your own bundle ID and development
+Simulator builds need no profile; the bundle ID is an example. For a physical iPhone, choose your own bundle ID and development
 signing identity/profile, then build `-c Debug -r ios-arm64` and deploy with your
 usual iOS tooling. No signing credentials or profiles are supplied.
 
@@ -114,9 +112,8 @@ component names and implementation ownership; each range has a hue/alpha label.
    **MudSlider<int> — MudBlazor**; each pair displays its own current values.
 
 The comparison pages are `Components/Pages/Home.razor` and
-`Components/Pages/SliderOnlyRepro.razor`. The prior baseline crash extract remains
-in `Evidence/debug-aot-crash.txt`; current comparison verification is recorded
-separately below.
+`Components/Pages/SliderOnlyRepro.razor`. Prior baseline: [sanitized crash](Evidence/debug-aot-crash.txt). Current
+comparison verification follows.
 
 ## Owned component sources and assets
 
@@ -139,34 +136,32 @@ npm run build:assets
 The lockfile pins TypeScript 5.9.2 and Sass 1.93.1. Edit the `.ts` / `.scss` sources
 and regenerate; do not edit `wwwroot/owned-controls.js` or `.css` directly.
 
-## Current matched runtime matrix
+## Current matched runtime matrices
 
-On the named iPhone14ProMax/iOS26.5 simulator, the operator's original paired
-`MudSlider<int>` drag at12:20:49UTC again produced a matched SIGABRT through
-SetValueTextAsync. Owned picker input updated without exit.
+The operator's original paired int-slider drag at12:20:49UTC produced a matched
+SIGABRT through SetValueTextAsync; owned input updated without exit. The controlled
+Debug `/matched-sliders` ladder changes one dimension at a time:
 
-The controlled `/matched-sliders` page changes one variable per step:
-
-| Case, initial180/range0..360/step1/Immediate | Full-AOT | `all,-MudBlazor` |
+| Case, initial180/range0..360/step1/Immediate | Full-AOT Debug | all,-MudBlazor Debug |
 |---|---|---|
 | int plain bind, no label | SIGABRT | four values updated |
 | double plain bind, no label | SIGABRT | four values updated |
-| double explicit Task.CompletedTask, no label | SIGABRT | four values updated |
-| Blade exact double explicit/ValueLabel=true | SIGABRT | four values updated |
+| double explicit Task callback, no label | SIGABRT | four values updated |
+| Blade exact double callback/ValueLabel | SIGABRT | four values updated |
 
-These later inputs are **synthetic actual DOM range events**, not finger drags;
-rendered .NET outputs181/220/140/260 were checked. Both Debug builds used the
-same SDK402, packages, source and simulator; only interpreter selection changed.
-Their generated modes are MONO_AOT_MODE_FULL vs MONO_AOT_MODE_INTERP.
-Both stock647-shape selector registration and native-select controls mounted
-without exit in both modes; physical647 dropdown SIGSEGV was not reproduced.
+These later inputs are synthetic actual DOM events, with .NET outputs checked.
+The two Debug modes emit FULL vs INTERP. See the
+[slider evidence](Evidence/matched-runtime-matrix.md). The
+[Debug dropdown matrix](Evidence/select-interaction-matrix.md) separately passed
+10 runs,32 popup selections/rerenders and10 remount cycles in those modes.
 
-[Detailed measured evidence](Evidence/matched-runtime-matrix.md) and its compact
-JSON distinguish real/synthetic input, native signatures and scope limits.
-No physical Release or complete Mono-fix claim follows from these results.
-For opt-in synthetic launch, set `SIMCTL_CHILD_REPRO_START_PATH` to
-`/matched-sliders?case=int-bind&drive=true` (or double-bind, double-task,
-double-task-label). Ordinary entry/manual controls remain unchanged.
+**Release differs:** a four-cell experiment varies all,-MudBlazor vs all and
+SdkOnly/partial vs None/copy. Both mixed cells crash during stock-select mount;
+both all cells pass all dropdown interactions. None alone did not avoid the
+mixed fault. The two exact slider variants then pass8/8 runs in the same frozen
+Release artifacts (32 checked values). See
+[Release policy/link matrix and #6558 evaluation](Evidence/release-policy-matrix.md).
+No physical or universal runtime-fix claim follows from these simulator results.
 
 ## Original baseline verification and scope
 
